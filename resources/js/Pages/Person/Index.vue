@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
+import CreatePersonModal from './Partials/CreatePersonModal.vue'
 import { Link } from '@inertiajs/inertia-vue3'
 
 const people = [
@@ -14,6 +15,7 @@ const people = [
 
 <template>
   <AppLayout>
+    <CreatePersonModal />
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
