@@ -5,8 +5,8 @@ import { UserIcon } from '@heroicons/vue/24/outline'
 import { Link } from '@inertiajs/inertia-vue3'
 
 const options = [
-  { name: 'Natural Person', href: '#', icon: UserIcon },
-  { name: 'Juridical Person', href: '#', icon: UserIcon },
+  { name: 'Natural Person', href: route('naturalPersons.create'), icon: UserIcon },
+  { name: 'Juridical Person', href: route('juridicalPersons.create'), icon: UserIcon },
 ]
 
 const open = ref(true)
@@ -33,6 +33,9 @@ const open = ref(true)
                     <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.</p>
                   </div>
                 </div>
+              </div>
+              <div class="mt-5 sm:mt-6">
+                <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm" @click="open = false">click this and it will close</button>
               </div>
               <div v-for="item in options" class="mt-5 sm:mt-6">
                 <Link :href="item.href" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm" @click="open = false">{{ item.name }}</Link>

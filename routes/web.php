@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\NaturalPersonController;
+use App\Http\Controllers\JuridicalPersonController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +43,9 @@ require __DIR__.'/auth.php';
 
 // Persons
 Route::resource('/persons', PersonController::class);
+
+// Natural Persons
+Route::get('/natural-persons/create', [NaturalPersonController::class, 'create'])->name('naturalPersons.create');
+
+// Juridical Persons
+Route::get('/juridical-persons/create', [JuridicalPersonController::class, 'create'])->name('juridicalPersons.create');
