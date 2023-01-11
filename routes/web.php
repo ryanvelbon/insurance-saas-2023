@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PersonController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -39,5 +39,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Clients
-Route::resource('/clients', ClientController::class);
+// Persons
+Route::resource('/persons', PersonController::class);

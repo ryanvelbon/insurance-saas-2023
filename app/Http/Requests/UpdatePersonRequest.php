@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Client;
+use App\Models\Person;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreClientRequest extends FormRequest
+class UpdatePersonRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('client_create');
+        return Gate::allows('person_edit');
     }
 
     public function rules()

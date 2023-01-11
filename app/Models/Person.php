@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Client extends Model
+class Person extends Model
 {
     use SoftDeletes;
     use HasFactory;
@@ -17,7 +17,7 @@ class Client extends Model
         'juridical' => 'juridical',
     ];
 
-    public $table = 'clients';
+    public $table = 'persons';
 
     protected $dates = [
         'created_at',

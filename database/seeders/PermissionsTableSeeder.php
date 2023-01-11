@@ -80,23 +80,23 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 18,
-                'title' => 'client_create',
+                'title' => 'person_create',
             ],
             [
                 'id'    => 19,
-                'title' => 'client_edit',
+                'title' => 'person_edit',
             ],
             [
                 'id'    => 20,
-                'title' => 'client_show',
+                'title' => 'person_show',
             ],
             [
                 'id'    => 21,
-                'title' => 'client_delete',
+                'title' => 'person_delete',
             ],
             [
                 'id'    => 22,
-                'title' => 'client_access',
+                'title' => 'person_access',
             ],
         ];
 
