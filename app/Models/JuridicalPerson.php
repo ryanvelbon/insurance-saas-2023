@@ -82,6 +82,7 @@ class JuridicalPerson extends Model
     ];
 
     protected $fillable = [
+        'person_id',
         'name',
         'description',
         'type',

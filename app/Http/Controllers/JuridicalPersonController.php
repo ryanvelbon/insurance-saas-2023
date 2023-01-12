@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreJuridicalPersonRequest;
 use App\Http\Requests\UpdateJuridicalPersonRequest;
+use App\Models\Person;
 use App\Models\JuridicalPerson;
 use Gate;
 use Illuminate\Http\Request;
@@ -24,20 +25,24 @@ class JuridicalPersonController extends Controller
         ]);
     }
 
-    /**
-     * temporary. Just for debugging.
-     */
-    public function store(Request $request)
+    public function store(StoreJuridicalPersonRequest $request): RedirectResponse
     {
-        return $request;
-    }
+        $person = Person::create([
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'type' => 'juridical'
+        ]);
 
-    /**
-     * this is the actual store() function
-     */
-    public function SKIP_store(StoreJuridicalPersonRequest $request): RedirectResponse
-    {
-        $juridicalPerson = JuridicalPerson::create($request->all());
+        JuridicalPerson::create([
+            'person_id' => $person->id,
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'type' => $request->input('type'),
+            'size' => $request->input('size'),
+            'founded' => $request->input('founded'),
+            'status' => $request->input('status'),
+            'website' => $request->input('website'),
+        ]);
 
         return redirect()->route('persons.index');
     }

@@ -9,7 +9,7 @@ class CreatePersonsJuridicalTable extends Migration
     public function up()
     {
         Schema::create('persons__juridical', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->unique();
+            $table->unsignedBigInteger('person_id')->unique();
             $table->string('name')->unique();
             $table->string('description')->nullable();
             $table->string('type')->nullable();
@@ -20,7 +20,7 @@ class CreatePersonsJuridicalTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id')->references('id')->on('persons');
+            $table->foreign('person_id')->references('id')->on('persons');
         });
     }
 
