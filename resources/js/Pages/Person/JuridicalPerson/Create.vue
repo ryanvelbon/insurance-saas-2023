@@ -5,6 +5,7 @@ import InputError from '@/Components/InputError.vue'
 import TextInput from '@/Components/TextInput.vue'
 import TextArea from '@/Components/TextArea.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
+import DropdownA from '@/Components/DropdownA.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
@@ -114,9 +115,27 @@ console.log(props.data)
         <div class="mt-8">
           <InputLabel for="type" value="Type" />
 
-
+          <DropdownA
+            id="type"
+            :items="data.typeChoices"
+            v-model="form.type"
+            class="mt-1 block"
+          />
 
           <InputError class="mt-2" :message="form.errors.type" />
+        </div>
+
+        <div class="mt-8">
+          <InputLabel for="status" value="Status" />
+
+          <DropdownA
+            id="status"
+            :items="data.statusChoices"
+            v-model="form.status"
+            class="mt-1 block"
+          />
+
+          <InputError class="mt-2" :message="form.errors.status" />
         </div>
 
         <div class="mt-8">
