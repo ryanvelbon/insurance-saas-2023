@@ -17,6 +17,16 @@ class StoreJuridicalPersonRequest extends FormRequest
     public function rules()
     {
         return [
+            'email' => [
+                'email',
+                'required',
+                'unique:persons'
+            ],
+            'phone' => [
+                'string',
+                'required',
+                'unique:persons'
+            ],
             'name' => [
                 'string',
                 'min:1',

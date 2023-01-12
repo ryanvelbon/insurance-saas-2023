@@ -10,8 +10,6 @@ use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyPersonRequest;
-use App\Http\Requests\StorePersonRequest;
-use App\Http\Requests\UpdatePersonRequest;
 use App\Models\Person;
 
 class PersonController extends Controller
@@ -45,26 +43,11 @@ class PersonController extends Controller
         ]);
     }
 
-    // PENDING: StorePersonRequest
-    public function store(Request $request): RedirectResponse
-    {
-        $person = Person::create($request->all());
-
-        return redirect()->route('persons.index');
-    }
-
     public function edit(Person $person)
     {
         abort_if(Gate::denies('person_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('persons.edit', compact('person'));
-    }
-
-    public function update(UpdatePersonRequest $request, Person $person)
-    {
-        $person->update($request->all());
-
-        return redirect()->route('persons.index');
     }
 
     public function show(Person $person)

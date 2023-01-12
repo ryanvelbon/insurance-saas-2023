@@ -10,8 +10,8 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->string('type');
             $table->timestamps();
             $table->softDeletes();
