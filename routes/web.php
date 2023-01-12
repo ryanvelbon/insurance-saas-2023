@@ -49,3 +49,4 @@ Route::get('/natural-persons/create', [NaturalPersonController::class, 'create']
 
 // Juridical Persons
 Route::get('/juridical-persons/create', [JuridicalPersonController::class, 'create'])->name('juridicalPersons.create');
+Route::post('/juridical-persons', [JuridicalPersonController::class, 'store'])->name('juridicalPersons.store');
