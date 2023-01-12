@@ -36,7 +36,7 @@ const submit = () => {
           <p class="mt-4 text-lg leading-6 text-gray-500">Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
         </div>
         <div class="mt-12">
-          <form @submit.prevent="submit" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+          <form @submit.prevent="submit" autocomplete="off" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
             <div>
               <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
               <div class="mt-1">
@@ -46,26 +46,25 @@ const submit = () => {
                   type="text"
                   class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   v-model="form.first_name"
-                  autocomplete="given-name"
                 />
               </div>
             </div>
             <div>
               <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
               <div class="mt-1">
-                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                <input type="text" name="last-name" id="last-name" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
               </div>
             </div>
             <div class="sm:col-span-2">
               <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
               <div class="mt-1">
-                <input type="text" name="company" id="company" autocomplete="organization" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                <input type="text" name="company" id="company" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
               </div>
             </div>
             <div class="sm:col-span-2">
               <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
               <div class="mt-1">
-                <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                <input id="email" name="email" type="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
               </div>
             </div>
             <div class="sm:col-span-2">
@@ -79,7 +78,7 @@ const submit = () => {
                     <option>EU</option>
                   </select>
                 </div>
-                <input type="text" name="phone-number" id="phone-number" autocomplete="tel" class="block w-full rounded-md border-gray-300 py-3 px-4 pl-20 focus:border-indigo-500 focus:ring-indigo-500" placeholder="+1 (555) 987-6543" />
+                <input type="text" name="phone-number" id="phone-number" class="block w-full rounded-md border-gray-300 py-3 px-4 pl-20 focus:border-indigo-500 focus:ring-indigo-500" placeholder="+1 (555) 987-6543" />
               </div>
             </div>
             <div class="sm:col-span-2">
