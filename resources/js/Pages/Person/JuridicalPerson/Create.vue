@@ -49,112 +49,113 @@ console.log(props.data)
     <InputError class="mt-2" :message="form.errors.description" />
 
     <form @submit.prevent="submit" autocomplete="off">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <section class="bg-red-200 p-8">
+          <div>
+            <InputLabel for="name" value="Name" />
 
-      <section class="bg-gray-200 p-8 m-2">
+            <TextInput
+              id="name"
+              type="text"
+              v-model="form.name"
+              class="mt-1 block w-full"
+              required
+              autofocus
+            />
+
+            <InputError class="mt-2" :message="form.errors.name" />
+          </div>
+
+          <div class="mt-8">
+            <InputLabel for="type" value="Type" />
+
+            <DropdownA
+              id="type"
+              :items="data.typeChoices"
+              v-model="form.type"
+              class="mt-1 block"
+            />
+
+            <InputError class="mt-2" :message="form.errors.type" />
+          </div>
+
+          <div class="mt-8">
+            <InputLabel for="status" value="Status" />
+
+            <DropdownA
+              id="status"
+              :items="data.statusChoices"
+              v-model="form.status"
+              class="mt-1 block"
+            />
+
+            <InputError class="mt-2" :message="form.errors.status" />
+          </div>
+
+          <div class="mt-8">
+            <InputLabel for="founded" value="Founded" />
+
+            <TextInput
+              id="founded"
+              type="number"
+              v-model="form.founded"
+              class="mt-1 block"
+              required
+              min="1800"
+              max="2100"
+            />
+
+            <InputError class="mt-2" :message="form.errors.founded" />
+          </div>
+        </section>
+        <section class="bg-blue-200 p-8">
+          <div>
+            <InputLabel for="email" value="Email" />
+
+            <TextInput
+              id="email"
+              type="email"
+              v-model="form.email"
+              class="mt-1 block"
+              required
+            />
+
+            <InputError class="mt-2" :message="form.errors.email" />
+          </div>
+
+          <div class="mt-8">
+            <InputLabel for="phone" value="Phone" />
+
+            <TextInput
+              id="phone"
+              type="text"
+              v-model="form.phone"
+              class="mt-1 block"
+              required
+            />
+
+            <InputError class="mt-2" :message="form.errors.phone" />
+          </div>
+
+          <div class="mt-8">
+            <InputLabel for="website" value="Website" />
+
+            <TextInput
+              id="website"
+              type="text"
+              v-model="form.website"
+              class="mt-1 block"
+              required
+            />
+
+            <InputError class="mt-2" :message="form.errors.website" />
+          </div>
+
+
+        </section>
+      </div>
+      <section class="bg-green-200 p-8">
         <div>
-          <InputLabel for="email" value="Email" />
-
-          <TextInput
-            id="email"
-            type="email"
-            v-model="form.email"
-            class="mt-1 block"
-            required
-          />
-
-          <InputError class="mt-2" :message="form.errors.email" />
-        </div>
-
-        <div class="mt-8">
-          <InputLabel for="phone" value="Phone" />
-
-          <TextInput
-            id="phone"
-            type="text"
-            v-model="form.phone"
-            class="mt-1 block"
-            required
-          />
-
-          <InputError class="mt-2" :message="form.errors.phone" />
-        </div>
-
-        <div class="mt-8">
-          <InputLabel for="website" value="Website" />
-
-          <TextInput
-            id="website"
-            type="text"
-            v-model="form.website"
-            class="mt-1 block"
-            required
-          />
-
-          <InputError class="mt-2" :message="form.errors.website" />
-        </div>
-
-
-      </section>
-
-      <section class="bg-gray-200 p-8 m-2">
-        <div>
-          <InputLabel for="name" value="Name" />
-
-          <TextInput
-            id="name"
-            type="text"
-            v-model="form.name"
-            class="mt-1 block w-full"
-            required
-            autofocus
-          />
-
-          <InputError class="mt-2" :message="form.errors.name" />
-        </div>
-
-        <div class="mt-8">
-          <InputLabel for="type" value="Type" />
-
-          <DropdownA
-            id="type"
-            :items="data.typeChoices"
-            v-model="form.type"
-            class="mt-1 block"
-          />
-
-          <InputError class="mt-2" :message="form.errors.type" />
-        </div>
-
-        <div class="mt-8">
-          <InputLabel for="status" value="Status" />
-
-          <DropdownA
-            id="status"
-            :items="data.statusChoices"
-            v-model="form.status"
-            class="mt-1 block"
-          />
-
-          <InputError class="mt-2" :message="form.errors.status" />
-        </div>
-
-        <div class="mt-8">
-          <InputLabel for="founded" value="Founded" />
-
-          <TextInput
-            id="founded"
-            type="number"
-            v-model="form.founded"
-            class="mt-1 block"
-            required
-            min="1800"
-            max="2100"
-          />
-
-          <InputError class="mt-2" :message="form.errors.founded" />
-        </div>
-
-        <div class="mt-8">
           <InputLabel for="description" value="Description" />
 
           <TextArea
@@ -166,10 +167,7 @@ console.log(props.data)
           <InputError class="mt-2" :message="form.errors.description" />
         </div>
       </section>
-      <section class="bg-gray-200 p-8 m-2">
-        Step
-      </section>
-      <section class="bg-gray-200 p-8 m-2">
+      <section class="bg-gray-200 p-8">
         <fieldset class="sm:col-span-2">
           <legend class="block text-sm font-medium text-gray-700">Number of employees</legend>
           <div class="mt-4 grid grid-cols-1 gap-y-4">
