@@ -36,4 +36,21 @@ class Role extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    /**
+     * attaches permissions by title
+     */
+    public function attachPermissions(Array $permissionTitles)
+    {
+        $permissions = collect([]);
+
+        foreach ($permissionTitles as $title) {
+            $permission = Permission::where('title', $title)->first();
+            if ($permission) {
+                $permissions->push($permission);
+            }
+        }
+
+        $this->permissions()->syncWithoutDetaching($permissions->pluck('id'));
+    }
 }
