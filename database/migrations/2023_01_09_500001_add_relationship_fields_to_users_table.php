@@ -13,4 +13,11 @@ class AddRelationshipFieldsToUsersTable extends Migration
             $table->foreign('team_id')->references('id')->on('teams');
         });
     }
+
+    public function down()
+    {
+        Schema::table('users', static function (Blueprint $table) {
+            $table->dropForeign('users_team_id_foreign');
+        });
+    }
 }
