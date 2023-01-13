@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\NaturalPersonController;
@@ -40,6 +41,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Teams
+Route::get('/team-members', [TeamMemberController::class, 'index'])->name('team-members.index');
+Route::post('/team-members', [TeamMemberController::class, 'invite'])->name('team-members.invite');
 
 // Persons
 Route::resource('/persons', PersonController::class);
