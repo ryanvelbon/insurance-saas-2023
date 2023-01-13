@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Team;
 
@@ -23,10 +24,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         foreach (['Team A', 'Team B'] as $teamName) {
+            
             $team = Team::create(['name' => $teamName]);
+            
             $users = User::factory()
                         ->count(3)
                         ->create(['team_id' => $team->id]);
+
+            // assign Sales Agent role
+            foreach ($users as $user) {
+                $user->roles()->sync(Role::where('title', 'Sales Agent')->first()->id);
+            }
+
             $team->owner_id = $users[0]->id;
             $team->save();
         }
