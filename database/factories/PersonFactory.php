@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Country;
 use App\Models\Person;
+use App\Models\NaturalPerson;
 use App\Models\JuridicalPerson;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Config;
+
 
 class PersonFactory extends Factory
 {
@@ -13,10 +16,15 @@ class PersonFactory extends Factory
 
     public function definition()
     {
+        $isos = Config::get('constants.targetMarketCountries');
+        $iso = $isos[array_rand($isos)];
+        $country = Country::where('iso', $iso)->first();
+
         return [
             'email'  => $this->faker->email(),
             'phone'  => rand(10000000, 999999999999),
-            'type'   => 2,
+            'type'   => rand(1,2),
+            'domicile_country_id' => $country->id,
         ];
     }
 
@@ -36,6 +44,24 @@ class PersonFactory extends Factory
                     break;
             }
         });
+    }
+
+    private function generateNaturalPerson($person) {
+
+        // adds a 5% chance of person being a foreigner/expat
+        $country = (rand(1,20) > 19)
+                        ? Country::inRandomOrder()->first()
+                        : Country::findOrFail($person->domicile->id);
+
+        NaturalPerson::create([
+            'person_id' => $person->id,
+            'passport_no' => $country->iso.rand(10000000,99999999), // *REVISE*
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'nationality' => $country->id,
+            'gender' => rand(0,1),
+            'dob' => date('Y-m-d', rand(strtotime("-80 year"), strtotime("-18 year")))
+        ]);
     }
 
     private function generateJuridicalPerson($person) {

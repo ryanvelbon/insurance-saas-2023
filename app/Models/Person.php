@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Person extends Model
 {
     use SoftDeletes;
-    use MultiTenantModelTrait;
     use HasFactory;
 
     public const TYPE_NATURAL = 1;
@@ -33,10 +32,16 @@ class Person extends Model
         'email',
         'phone',
         'type',
+        'domicile_country_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function domicile()
+    {
+        return $this->belongsTo(Country::class, 'domicile_country_id');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {
