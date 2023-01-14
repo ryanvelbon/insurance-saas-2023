@@ -30,7 +30,7 @@ class JuridicalPersonController extends Controller
         $person = Person::create([
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'type' => 'juridical'
+            'type' => Person::TYPE_JURIDICAL
         ]);
 
         JuridicalPerson::create([

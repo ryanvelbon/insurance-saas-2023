@@ -12,7 +12,7 @@ class CreatePersonsTable extends Migration
             $table->bigIncrements('id');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('type');
+            $table->unsignedTinyInteger('type');
             $table->timestamps();
             $table->softDeletes();
         });

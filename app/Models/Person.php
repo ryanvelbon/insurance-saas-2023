@@ -10,11 +10,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Person extends Model
 {
     use SoftDeletes;
+    use MultiTenantModelTrait;
     use HasFactory;
 
+    public const TYPE_NATURAL = 1;
+    public const TYPE_JURIDICAL = 2;
+
     public const TYPE_SELECT = [
-        'natural'   => 'natural',
-        'juridical' => 'juridical',
+        self::TYPE_NATURAL   => 'natural',
+        self::TYPE_JURIDICAL => 'juridical',
     ];
 
     public $table = 'persons';
