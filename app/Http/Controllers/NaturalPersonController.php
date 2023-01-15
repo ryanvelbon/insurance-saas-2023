@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreNaturalPersonRequest;
+use App\Models\Country;
+use App\Models\Person;
+use App\Models\NaturalPerson;
+use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Inertia\Inertia;
 
 class NaturalPersonController extends Controller
@@ -11,8 +18,30 @@ class NaturalPersonController extends Controller
     {
         return Inertia::render('Person/NaturalPerson/Create', [
             'data' => [
-
+                'genderChoices' => NaturalPerson::GENDER_SELECT,
+                'countries' => Country::all(),
             ],
         ]);
+    }
+
+    public function store(StoreNaturalPersonRequest $request): RedirectResponse
+    {
+        $person = Person::create([
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'type' => Person::TYPE_NATURAL
+        ]);
+
+        NaturalPerson::create([
+            'person_id' => $person->id,
+            'passport_no' => $request->input('passportNo'),
+            'first_name' => $request->input('firstName'),
+            'last_name' => $request->input('lastName'),
+            'nationality' => $request->input('nationality'),
+            'gender' => $request->input('gender'),
+            'dob' => $request->input('dob'),
+        ]);
+
+        return redirect()->route('persons.index');
     }
 }

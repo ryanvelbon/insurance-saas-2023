@@ -51,6 +51,7 @@ Route::resource('/persons', PersonController::class);
 
 // Natural Persons
 Route::get('/natural-persons/create', [NaturalPersonController::class, 'create'])->name('naturalPersons.create');
+Route::post('/natural-persons', [NaturalPersonController::class, 'store'])->name('naturalPersons.store');
 
 // Juridical Persons
 Route::get('/juridical-persons/create', [JuridicalPersonController::class, 'create'])->name('juridicalPersons.create');

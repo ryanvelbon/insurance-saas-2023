@@ -14,8 +14,14 @@ class NaturalPerson extends Model
     public const GENDER_FEMALE = 0;
 
     public const GENDER_SELECT = [
-        self::GENDER_MALE   => 'Male',
-        self::GENDER_FEMALE => 'Female',
+        [
+            'label' => 'Male',
+            'value' => self::GENDER_MALE,
+        ],
+        [
+            'label' => 'Female',
+            'value' => self::GENDER_FEMALE,
+        ],
     ];
 
     public $table = 'persons__natural';
