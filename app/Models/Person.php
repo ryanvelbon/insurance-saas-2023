@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Person extends Model
 {
     use SoftDeletes;
+    use MultiTenantModelTrait;
     use HasFactory;
 
     public const TYPE_NATURAL = 1;
@@ -32,11 +34,17 @@ class Person extends Model
         'email',
         'phone',
         'type',
+        'team_id',
         'domicile_country_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
 
     public function domicile()
     {
