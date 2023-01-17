@@ -20,6 +20,8 @@ import {
   HomeIcon,
   InboxIcon,
   UsersIcon,
+  UserGroupIcon,
+  DocumentIcon,
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
@@ -27,7 +29,8 @@ import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 const navigation = [
   { name: 'Dashboard', href: route('dashboard'), icon: HomeIcon, current: true },
   { name: 'Persons', href: route('persons.index'), icon: UsersIcon, current: false },
-  { name: 'Team', href: route('team-members.index'), icon: UsersIcon, current: false },
+  { name: 'Policies', href: route('policies.index'), icon: DocumentIcon, current: false },
+  { name: 'Team', href: route('team-members.index'), icon: UserGroupIcon, current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
