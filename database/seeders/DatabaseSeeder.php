@@ -40,5 +40,8 @@ class DatabaseSeeder extends Seeder
             $team->owner_id = $users[0]->id;
             $team->save();
         }
+
+        // *TEMP* adds admin to Team B
+        $admin = User::find(1); $admin->team_id = 2; $admin->save();
     }
 }

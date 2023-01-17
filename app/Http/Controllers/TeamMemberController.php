@@ -17,6 +17,8 @@ class TeamMemberController extends Controller
 {
     public function index()
     {
+        abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $team = Team::findOrFail(auth()->user()->team_id);
         $roles = Role::get(['id', 'title']);
 

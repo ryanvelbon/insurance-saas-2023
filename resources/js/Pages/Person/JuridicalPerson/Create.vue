@@ -101,8 +101,8 @@ console.log(props.data)
               v-model="form.founded"
               class="mt-1 block"
               required
-              min="1800"
-              max="2100"
+              min="1900"
+              max="2025"
             />
 
             <InputError class="mt-2" :message="form.errors.founded" />
