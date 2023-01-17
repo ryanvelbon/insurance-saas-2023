@@ -118,6 +118,46 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 27,
                 'title' => 'team_access',
             ],
+            [
+                'id'    => 28,
+                'title' => 'insurer_create',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'insurer_edit',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'insurer_show',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'insurer_delete',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'insurer_access',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'policy_create',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'policy_edit',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'policy_show',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'policy_delete',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'policy_access',
+            ],
         ];
 
         Permission::insert($permissions);
