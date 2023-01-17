@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNaturalPersonRequest;
+// use App\Http\Requests\UpdateNaturalPersonRequest;
 use App\Models\Country;
 use App\Models\Person;
 use App\Models\NaturalPerson;
@@ -19,6 +20,7 @@ class NaturalPersonController extends Controller
         return Inertia::render('Person/NaturalPerson/Create', [
             'data' => [
                 'genderChoices' => NaturalPerson::GENDER_SELECT,
+                'maritalStatusChoices' => NaturalPerson::MARITAL_STATUS_SELECT,
                 'countries' => Country::all(),
             ],
         ]);
@@ -27,9 +29,10 @@ class NaturalPersonController extends Controller
     public function store(StoreNaturalPersonRequest $request): RedirectResponse
     {
         $person = Person::create([
+            'type' => Person::TYPE_NATURAL,
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'type' => Person::TYPE_NATURAL
+            'domicile_country_id' => $request->input('domicile'),
         ]);
 
         NaturalPerson::create([
@@ -40,6 +43,7 @@ class NaturalPersonController extends Controller
             'nationality' => $request->input('nationality'),
             'gender' => $request->input('gender'),
             'dob' => $request->input('dob'),
+            'marital_status' => $request->input('maritalStatus'),
         ]);
 
         return redirect()->route('persons.index');

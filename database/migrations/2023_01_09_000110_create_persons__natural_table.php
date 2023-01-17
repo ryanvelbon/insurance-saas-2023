@@ -16,6 +16,7 @@ class CreatePersonsNaturalTable extends Migration
             $table->unsignedBigInteger('nationality');
             $table->tinyInteger('gender');
             $table->date('dob');
+            $table->string('marital_status');
             $table->timestamps();
             $table->softDeletes();
 

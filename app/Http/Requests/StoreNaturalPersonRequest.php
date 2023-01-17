@@ -44,6 +44,11 @@ class StoreNaturalPersonRequest extends FormRequest
                 'min:1',
                 'max:80',
                 'required',
+                // 'unique:persons__natural',
+            ],
+            'maritalStatus' => [
+                'string',
+                'required',
             ],
         ];
     }

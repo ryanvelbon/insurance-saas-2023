@@ -24,6 +24,29 @@ class NaturalPerson extends Model
         ],
     ];
 
+    public const MARITAL_STATUS_SELECT = [
+        [
+            'label' => 'single',
+            'value' => 'single',
+        ],
+        [
+            'label' => 'married',
+            'value' => 'married',
+        ],
+        [
+            'label' => 'divorced',
+            'value' => 'divorced',
+        ],
+        [
+            'label' => 'widowed',
+            'value' => 'widowed',
+        ],
+        [
+            'label' => 'separated',
+            'value' => 'separated',
+        ],
+    ];
+
     public $table = 'persons__natural';
 
     protected $dates = [
@@ -40,6 +63,7 @@ class NaturalPerson extends Model
         'nationality',
         'gender',
         'dob',
+        'marital_status',
         'created_at',
         'updated_at',
         'deleted_at',

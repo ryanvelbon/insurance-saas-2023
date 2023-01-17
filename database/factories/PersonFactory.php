@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Team;
 use App\Models\Country;
 use App\Models\Person;
 use App\Models\NaturalPerson;
@@ -24,6 +25,7 @@ class PersonFactory extends Factory
             'email'  => $this->faker->email(),
             'phone'  => rand(10000000, 999999999999),
             'type'   => rand(1,2),
+            'team_id' => Team::inRandomOrder()->first()->id,
             'domicile_country_id' => $country->id,
         ];
     }
@@ -60,7 +62,8 @@ class PersonFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'nationality' => $country->id,
             'gender' => rand(0,1),
-            'dob' => date('Y-m-d', rand(strtotime("-80 year"), strtotime("-18 year")))
+            'dob' => date('Y-m-d', rand(strtotime("-80 year"), strtotime("-18 year"))),
+            'marital_status' => NaturalPerson::MARITAL_STATUS_SELECT[rand(0,4)]['value'],
         ]);
     }
 
@@ -80,6 +83,7 @@ class PersonFactory extends Factory
             'founded' => date('Y') - rand(0,40),
             'status' => null,
             'website' => $website,
+            // 'industry_id' => Industry::inRandomOrder()->first()->id,
         ]);
     }
 

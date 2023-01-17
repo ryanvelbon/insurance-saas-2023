@@ -31,6 +31,7 @@ const form = useForm({
   dob: '',
   nationality: '',
   passportNo: '',
+  maritalStatus: '',
 })
 
 const submit = () => {
@@ -126,7 +127,17 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.dob" />
             </div>
 
-            <div>X</div>
+            <div>
+              <InputLabel for="maritalStatus" value="Marital Status" />
+              <DropdownA
+                id="maritalStatus"
+                :items="data.maritalStatusChoices"
+                v-model="form.maritalStatus"
+                class="mt-1 block"
+                required
+              />
+              <InputError class="mt-2" :message="form.errors.maritalStatus" />
+            </div>
 
           </div>
         </section>
