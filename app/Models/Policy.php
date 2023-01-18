@@ -16,22 +16,52 @@ class Policy extends Model
     use HasFactory;
 
     public const COVERAGE_TYPE_SELECT = [
-        'named' => 'Named Perils',
-        'all'   => 'All-Risk / Open Perils',
+        [
+            'label' => 'Named Perils',
+            'value' => 'named',
+        ],
+        [
+            'label' => 'All-Risk / Open Perils',
+            'value' => 'all',
+        ],
     ];
 
     public const LAYER_SELECT = [
-        'primary'    => 'Primary',
-        'excess'     => 'Excess Only',
-        'standalone' => 'Stand-alone',
+        [
+            'label' => 'Primary',
+            'value' => 'primary',
+        ],
+        [
+            'label' => 'Excess Only',
+            'value' => 'excess',
+        ],
+        [
+            'label' => 'Stand-alone',
+            'value' => 'standalone',
+        ],
     ];
 
     public const STATUS_SELECT = [
-        '1' => 'upcoming',
-        '2' => 'active',
-        '3' => 'expired',
-        '4' => 'lapsed',
-        '5' => 'cancelled',
+        [
+            'label' => 'upcoming',
+            'value' => 1,
+        ],
+        [
+            'label' => 'active',
+            'value' => 2,
+        ],
+        [
+            'label' => 'expired',
+            'value' => 3,
+        ],
+        [
+            'label' => 'lapsed',
+            'value' => 4,
+        ],
+        [
+            'label' => 'cancelled',
+            'value' => 5,
+        ],
     ];
 
     public $table = 'policies';
