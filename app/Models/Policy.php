@@ -7,10 +7,12 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\MultiTenantModelTrait;
 
 class Policy extends Model
 {
     use SoftDeletes;
+    use MultiTenantModelTrait;
     use HasFactory;
 
     public const COVERAGE_TYPE_SELECT = [
@@ -57,6 +59,7 @@ class Policy extends Model
         'excess',
         'limit_amount',
         'agent_id',
+        'team_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -95,6 +98,11 @@ class Policy extends Model
     public function agent()
     {
         return $this->belongsTo(User::class, 'agent_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

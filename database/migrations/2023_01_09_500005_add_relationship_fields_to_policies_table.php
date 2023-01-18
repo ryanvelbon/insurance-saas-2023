@@ -9,12 +9,14 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
     public function up()
     {
         Schema::table('policies', function (Blueprint $table) {
-            $table->unsignedBigInteger('insurer_id')->nullable();
+            $table->unsignedBigInteger('insurer_id');
             $table->foreign('insurer_id')->references('id')->on('insurers');
-            $table->unsignedBigInteger('policyholder_id')->nullable();
+            $table->unsignedBigInteger('policyholder_id');
             $table->foreign('policyholder_id')->references('id')->on('persons');
-            $table->unsignedBigInteger('agent_id')->nullable();
+            $table->unsignedBigInteger('agent_id');
             $table->foreign('agent_id')->references('id')->on('users');
+            $table->unsignedBigInteger('team_id');
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 
@@ -24,6 +26,7 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
             $table->dropForeign('policies_insurer_id_foreign');
             $table->dropForeign('policies_policyholder_id_foreign');
             $table->dropForeign('policies_agent_id_foreign');
+            $table->dropForeign('policies_team_id_foreign');
         });
     }
 }
