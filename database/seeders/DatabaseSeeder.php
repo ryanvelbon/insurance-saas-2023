@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Team;
+use App\Models\Insurer;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -43,5 +44,10 @@ class DatabaseSeeder extends Seeder
 
         // *TEMP* adds admin to Team B
         $admin = User::find(1); $admin->team_id = 2; $admin->save();
+
+
+        Insurer::factory(10)->create();
+
+        $this->call(PoliciesTableSeeder::class);
     }
 }
