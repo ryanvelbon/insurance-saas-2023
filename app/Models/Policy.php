@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use \DateTimeInterface;
-// use Carbon\Carbon;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -105,25 +105,25 @@ class Policy extends Model
         return $this->belongsTo(Person::class, 'policyholder_id');
     }
 
-    // public function getStartDateAttribute($value)
-    // {
-    //     return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    // }
+    public function getStartDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
 
-    // public function setStartDateAttribute($value)
-    // {
-    //     $this->attributes['start_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    // }
+    public function setStartDateAttribute($value)
+    {
+        $this->attributes['start_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
 
-    // public function getEndDateAttribute($value)
-    // {
-    //     return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
-    // }
+    public function getEndDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
 
-    // public function setEndDateAttribute($value)
-    // {
-    //     $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
-    // }
+    public function setEndDateAttribute($value)
+    {
+        $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
 
     public function agent()
     {
