@@ -1,5 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
+import CreatePolicyModal from './Partials/CreatePolicyModal.vue'
 
 const props = defineProps({
   data: Object,
@@ -11,6 +12,7 @@ const props = defineProps({
 
 <template>
   <AppLayout>
+    <CreatePolicyModal />
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">

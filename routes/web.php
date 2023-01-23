@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\NaturalPersonController;
 use App\Http\Controllers\JuridicalPersonController;
+
 use App\Http\Controllers\PolicyController;
+use App\Http\Controllers\MotorPolicyController;
+use App\Http\Controllers\TravelPolicyController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -61,3 +65,5 @@ Route::post('/juridical-persons', [JuridicalPersonController::class, 'store'])->
 
 // Policies
 Route::get('/policies', [PolicyController::class, 'index'])->name('policies.index');
+Route::get('/policies-motor/create', [MotorPolicyController::class, 'create'])->name('policies-motor.create');
+Route::get('/policies-travel/create', [TravelPolicyController::class, 'create'])->name('policies-travel.create');
