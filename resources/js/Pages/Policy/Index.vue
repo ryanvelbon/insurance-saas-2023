@@ -30,6 +30,7 @@ const props = defineProps({
               <table class="min-w-full divide-y divide-gray-300">
                 <thead class="bg-gray-50">
                   <tr>
+                    <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
                     <th scope="col" class="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Policy No.</th>
                     <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Coverage</th>
                     <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Starts</th>
@@ -47,6 +48,7 @@ const props = defineProps({
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
                   <tr v-for="policy in data.policies" :key="policy.id">
+                    <td class="whitespace-nowrap px-2 py-2 text-xs text-gray-500">{{ policy.category }}</td>
                     <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">{{ policy.policy_no }}</td>
                     <td class="whitespace-nowrap px-2 py-2 text-xs text-gray-500">{{ policy.coverage_type }}</td>
                     <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.start_date }}</td>

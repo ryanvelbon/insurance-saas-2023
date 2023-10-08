@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
 
             CountriesTableSeeder::class,
 
+            InsuranceCategoriesTableSeeder::class,
+
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             UsersTableSeeder::class,

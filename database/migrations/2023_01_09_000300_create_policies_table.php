@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('policies', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('category');
             $table->string('policy_no');
             $table->string('coverage_type');
             $table->date('start_date');
@@ -23,6 +24,8 @@ return new class extends Migration
             $table->decimal('limit_amount', 15, 2);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('category')->references('slug')->on('insurance_categories')->onUpdate('CASCADE')->onDelete('RESTRICT');
         });
     }
 
