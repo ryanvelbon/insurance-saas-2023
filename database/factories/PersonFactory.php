@@ -69,14 +69,15 @@ class PersonFactory extends Factory
 
     private function generateJuridicalPerson($person) {
 
-        $website = $this->generateWebsiteName();
+        $name = $this->generateUniqueCompanyName();
+        $website = strtolower(preg_replace("/[^a-z0-9]+/i", "", $name)) . '.com';
 
         $person->email = ['hello', 'admin', 'info'][rand(0,2)]  . '@' . $website;
         $person->save();
 
         JuridicalPerson::create([
             'person_id' => $person->id,
-            'name' => ucfirst(explode(".", $website)[0]) . " " . $this->faker->companySuffix(),
+            'name' => $name,
             'description' => $this->faker->text($maxNbChars=100),
             'type' => null,
             'size' => rand(1,6),
@@ -87,18 +88,16 @@ class PersonFactory extends Factory
         ]);
     }
 
-    /**
-     * Generates a unique value for `website` field
-     */
-    private function generateWebsiteName() {
+    private function generateUniqueCompanyName() {
 
         $isUnique = false;
+        $name = '';
 
         while (!$isUnique) {
-            $website = explode('@', $this->faker->companyEmail())[1];
-            $isUnique = !(JuridicalPerson::where('website', $website)->exists());
+            $name = ucfirst($this->faker->word) . " " . $this->faker->companySuffix();
+            $isUnique = !(JuridicalPerson::where('name', $name)->exists());
         }
 
-        return $website;
+        return $name;
     }
 }
