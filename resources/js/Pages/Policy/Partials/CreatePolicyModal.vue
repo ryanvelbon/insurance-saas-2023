@@ -9,12 +9,36 @@ import {
 const open = ref(true)
 
 const navigation = [
-  { name: 'Motor', href: route('policies-motor.create'), icon: CheckIcon },
-  { name: 'Home', href: '#', icon: CheckIcon },
-  { name: 'Travel', href: route('policies-travel.create'), icon: CheckIcon },
-  { name: 'Health', href: '#', icon: CheckIcon },
-  { name: 'Life', href: '#', icon: CheckIcon },
-  { name: 'Boat', href: '#', icon: CheckIcon },
+  {
+    name: 'Motor',
+    href: route('policies.create', ['motor']),
+    icon: CheckIcon
+  },
+  {
+    name: 'Home',
+    href: route('policies.create', ['home']),
+    icon: CheckIcon
+  },
+  {
+    name: 'Travel',
+    href: route('policies.create', ['travel']),
+    icon: CheckIcon
+  },
+  {
+    name: 'Health',
+    href: route('policies.create', ['health']),
+    icon: CheckIcon
+  },
+  {
+    name: 'Life',
+    href: route('policies.create', ['life']),
+    icon: CheckIcon
+  },
+  {
+    name: 'Boat',
+    href: route('policies.create', ['boat']),
+    icon: CheckIcon
+  },
 ]
 
 </script>

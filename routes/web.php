@@ -65,5 +65,4 @@ Route::post('/juridical-persons', [JuridicalPersonController::class, 'store'])->
 
 // Policies
 Route::get('/policies', [PolicyController::class, 'index'])->name('policies.index');
-Route::get('/policies-motor/create', [MotorPolicyController::class, 'create'])->name('policies-motor.create');
-Route::get('/policies-travel/create', [TravelPolicyController::class, 'create'])->name('policies-travel.create');
+Route::get('/policies/create/{category}', [PolicyController::class, 'create'])->name('policies.create');

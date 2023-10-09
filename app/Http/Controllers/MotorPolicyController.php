@@ -9,15 +9,5 @@ use Inertia\Inertia;
 
 class MotorPolicyController extends Controller
 {
-    public function create()
-    {
-        return Inertia::render('Policy/Motor/Create', [
-            'data' => [
-                
-            ],
-            'meta' => [
-
-            ],
-        ]);
-    }
+    //
 }

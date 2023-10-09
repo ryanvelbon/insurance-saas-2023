@@ -22,4 +22,16 @@ class PolicyController extends Controller
             ],
         ]);
     }
+
+    public function create($category)
+    {
+        return Inertia::render('Policy/Create', [
+            'data' => [
+                'selectedCategory' => $category
+            ],
+            'meta' => [
+
+            ],
+        ]);
+    }
 }

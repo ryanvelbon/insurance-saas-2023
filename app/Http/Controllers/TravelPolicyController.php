@@ -9,15 +9,5 @@ use Inertia\Inertia;
 
 class TravelPolicyController extends Controller
 {
-    public function create()
-    {
-        return Inertia::render('Policy/Travel/Create', [
-            'data' => [
-                
-            ],
-            'meta' => [
-
-            ],
-        ]);
-    }
+    //
 }
