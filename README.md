@@ -30,11 +30,41 @@
 
 ### Running the tests
 
+You need to create a separate MySQL database for running tests.
+
+Take note of these configurations in `phpunit.xml`:
+
+```
+<env name="APP_ENV" value="testing"/>
+<env name="DB_CONNECTION" value="mysql"/>
+<env name="DB_DATABASE" value="test_db"/>
+```
+
+```
+CREATE DATABASE test_db;
+```
+
+Also create a `.env.testing` file and set these variables:
+
+```
+APP_ENV=testing
+DB_DATABASE=test_db
+```
+
+You can seed your test database by including `--env=testing` flag
+
+    $ php artisan migrate --env=testing
+    $ php artisan db:seed --class=StaticDataSeeder --env=testing
+
 Run all tests
 
     $ php artisan test
 
 Run tests in a specific directory
+
+    $ php artisan test --filter=Policies
+
+or
 
     $ vendor/bin/phpunit --filter Policies
 
