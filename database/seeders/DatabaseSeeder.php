@@ -17,39 +17,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
             CountriesTableSeeder::class,
-
             InsuranceCategoriesTableSeeder::class,
-
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
+
             UsersTableSeeder::class,
-            RoleUserTableSeeder::class,
-            
+            InsurersTableSeeder::class,
+            PoliciesTableSeeder::class,
         ]);
-
-        foreach (['Team A', 'Team B'] as $teamName) {
-            
-            $team = Team::create(['name' => $teamName]);
-            
-            $users = User::factory()
-                        ->count(3)
-                        ->create(['team_id' => $team->id]);
-
-            // assign Sales Agent role
-            foreach ($users as $user) {
-                $user->roles()->sync(Role::where('title', 'Sales Agent')->first()->id);
-            }
-
-            $team->owner_id = $users[0]->id;
-            $team->save();
-        }
-
-        // *TEMP* adds admin to Team B
-        $admin = User::find(1); $admin->team_id = 2; $admin->save();
-
-
-        Insurer::factory(10)->create();
-
-        $this->call(PoliciesTableSeeder::class);
     }
 }
