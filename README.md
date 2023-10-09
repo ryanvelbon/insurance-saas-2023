@@ -19,6 +19,15 @@
 
 ## Getting Started
 
+### Demo
+
+    $ php artisan migrate
+
+    $ php artisan db:seed
+
+    $ php artisan db:seed --class=DemoSeeder
+
+
 ### Running the tests
 
 Run all tests
