@@ -55,4 +55,14 @@ class Person extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopeNatural($query)
+    {
+        return $query->where('type', self::TYPE_NATURAL);
+    }
+
+    public function scopeJuridical($query)
+    {
+        return $query->where('type', self::TYPE_JURIDICAL);
+    }
 }
