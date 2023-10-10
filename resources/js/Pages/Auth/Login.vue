@@ -4,7 +4,6 @@ import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
@@ -59,6 +58,10 @@ const submit = () => {
                         {{ status }}
                     </div>
 
+                    <h1 class="text-4xl text-gray-800 font-bold mb-4">Welcome back</h1>
+
+                    <p class="text-gray-700 mb-4">Sign into your account below</p>
+
                     <form @submit.prevent="submit">
                         <div>
                             <InputLabel for="email" value="Email" />
@@ -98,7 +101,13 @@ const submit = () => {
                             </label>
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="mt-8">
+                            <button class="bg-blue-500 hover:bg-blue-400 text-white w-full text-center py-3 font-bold rounded-lg" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Log in
+                            </button>
+                        </div>
+
+                        <div class="mt-4">
                             <Link
                                 v-if="canResetPassword"
                                 :href="route('password.request')"
@@ -106,10 +115,6 @@ const submit = () => {
                             >
                                 Forgot your password?
                             </Link>
-
-                            <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                Log in
-                            </PrimaryButton>
                         </div>
                     </form>
                 </div>
