@@ -33,7 +33,7 @@ const navigation = [
   { name: 'Team', href: route('team-members.index'), icon: UserGroupIcon, current: route().current('team-members.index') },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
+  { name: 'Your Profile', href: route('profile.edit') },
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: route('logout'), method: 'POST' },
 ]
