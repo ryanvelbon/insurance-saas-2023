@@ -1,5 +1,4 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -28,20 +27,6 @@ const submit = () => {
 <template>
     <GuestLayout>
         <Head title="Log in" />
-
-        <header class="px-8 py-2">
-            <div class="flex justify-between">
-                <div>
-                    <Link href="/">
-                        <ApplicationLogo class="w-12 h-12 fill-current text-gray-500" />
-                    </Link>
-                </div>
-                <div class="flex gap-4 items-center">
-                    <p class="text-gray-700 text-sm">Don't have an account?</p>
-                    <Link :href="route('register')" class="font-mono underline text-blue-500 hover:text-blue-400">Sign up</Link>
-                </div>
-            </div>
-        </header>
 
         <div class="min-h-screen grid grid-cols-1 lg:grid-cols-2">
             <section class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
