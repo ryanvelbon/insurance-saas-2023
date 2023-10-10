@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
+import Breadcrumbs from '@/Components/Breadcrumbs.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
 import TextInput from '@/Components/TextInput.vue'
@@ -20,12 +21,17 @@ const form = useForm({
   endDate: '',
 })
 
-
+const breadcrumbPages = [
+  { name: 'Policies', href: route('policies.index'), current: false },
+  { name: 'Create a Policy', href: '#', current: true },
+];
 
 </script>
 
 <template>
   <AppLayout>
+    <Head title="Create a New Policy" />
+    <Breadcrumbs :pages="breadcrumbPages" />
     <div class="bg-blue-200">
       <form @submit.prevent="submit" autocomplete="off">
         <div class="grid grid-cols-2">

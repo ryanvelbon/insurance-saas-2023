@@ -1,4 +1,5 @@
 <script setup>
+import { Head } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import CreatePolicyModal from './Partials/CreatePolicyModal.vue'
 
@@ -13,6 +14,7 @@ const props = defineProps({
 <template>
   <AppLayout>
     <CreatePolicyModal />
+    <Head title="Policies" />
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
