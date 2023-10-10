@@ -90,8 +90,10 @@ const maxWidthClass = computed(() => {
                         :class="maxWidthClass"
                     >
                         <div v-if="show">
-                            <div class="flex justify-end pt-2 pr-4">
-                                <button v-if="closeable" @click="$emit('close')">x</button>
+                            <div class="flex justify-end pt-3 pr-4">
+                                <button v-if="closeable" @click="$emit('close')">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
                             </div>
 
                             <div class="p-12">
