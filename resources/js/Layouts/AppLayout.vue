@@ -27,10 +27,10 @@ import {
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 
 const navigation = [
-  { name: 'Dashboard', href: route('dashboard'), icon: HomeIcon, current: true },
-  { name: 'Persons', href: route('persons.index'), icon: UsersIcon, current: false },
-  { name: 'Policies', href: route('policies.index'), icon: DocumentIcon, current: false },
-  { name: 'Team', href: route('team-members.index'), icon: UserGroupIcon, current: false },
+  { name: 'Dashboard', href: route('dashboard'), icon: HomeIcon, current: route().current('dashboard') },
+  { name: 'Persons', href: route('persons.index'), icon: UsersIcon, current: route().current('persons.index') },
+  { name: 'Policies', href: route('policies.index'), icon: DocumentIcon, current: route().current('policies.index') },
+  { name: 'Team', href: route('team-members.index'), icon: UserGroupIcon, current: route().current('team-members.index') },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
