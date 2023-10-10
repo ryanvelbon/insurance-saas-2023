@@ -33,7 +33,7 @@ class DatabaseTest extends TestCase
         $this->assertCount(6, $categories);
 
         $roles = Role::all();
-        $this->assertCount(4, $roles);
+        $this->assertCount(8, $roles);
 
         // --- These tables should be empty ---
 
