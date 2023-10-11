@@ -13,27 +13,33 @@ class InsuranceCategoriesTableSeeder extends Seeder
         $categories = [
             [
                 'title' => 'Boat',
-                'slug' => 'boat'
+                'slug' => 'boat',
+                'icon' => 'sailboat',
             ],
             [
                 'title' => 'Health',
-                'slug' => 'health'
+                'slug' => 'health',
+                'icon' => 'suitcase-medical',
             ],
             [
                 'title' => 'Home',
-                'slug' => 'home'
+                'slug' => 'home',
+                'icon' => 'house',
             ],
             [
                 'title' => 'Life',
-                'slug' => 'life'
+                'slug' => 'life',
+                'icon' => 'tombstone-blank', // skull, coffin
             ],
             [
                 'title' => 'Motor',
-                'slug' => 'motor'
+                'slug' => 'motor',
+                'icon' => 'car',
             ],
             [
                 'title' => 'Travel',
-                'slug' => 'travel'
+                'slug' => 'travel',
+                'icon' => 'plane',
             ],
         ];
 

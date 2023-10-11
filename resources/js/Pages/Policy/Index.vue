@@ -1,20 +1,23 @@
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3'
+import { ref } from 'vue'
+import { Head, Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
-import CreatePolicyModal from './Partials/CreatePolicyModal.vue'
+import Modal from '@/Components/Modal.vue'
 
 const props = defineProps({
   data: Object,
   meta: Object,
 })
 
+let showModal = ref(false)
 
 </script>
 
 <template>
   <AppLayout>
-    <CreatePolicyModal />
+
     <Head title="Policies" />
+
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
@@ -22,7 +25,7 @@ const props = defineProps({
           <p class="mt-2 text-sm text-gray-700">A table of all policies managed by you and your team.</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Export</button>
+          <button @click="showModal = true" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Create a New Policy</button>
         </div>
       </div>
       <div class="mt-8 flex flex-col">
@@ -75,5 +78,24 @@ const props = defineProps({
         </div>
       </div>
     </div>
+    <Modal :show="showModal" maxWidth="xl" @close="showModal = false">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-gray-800">Create a New Insurance Policy</h3>
+        <p class="text-gray-700">What type of insurance does your client wish to purchase?</p>
+      </div>
+      <div class="grid grid-cols-3">
+        <Link
+          v-for="category in data.categories"
+          :key="category.slug"
+          :href="route('policies.create', category.slug)"
+          class="bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-lg shadow-lg h-40 p-8 m-2 text-lg font-bold flex flex-col gap-8 justify-center items-center"
+        >
+          <i :class="`fa-light fa-${category.icon} fa-2xl`"></i>
+          <span class="text-center leading-none">
+            {{ category.title }}<br><small class="text-xs">insurance</small>
+          </span>
+        </Link>
+      </div>
+    </Modal>
   </AppLayout>
 </template>
