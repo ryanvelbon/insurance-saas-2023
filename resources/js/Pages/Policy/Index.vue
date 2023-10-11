@@ -83,7 +83,7 @@ let showModal = ref(false)
         <h3 class="text-2xl font-bold text-gray-800">Create a New Insurance Policy</h3>
         <p class="text-gray-700">What type of insurance does your client wish to purchase?</p>
       </div>
-      <div class="grid grid-cols-3">
+      <div class="grid grid-cols-2 md:grid-cols-3">
         <Link
           v-for="category in data.categories"
           :key="category.slug"
