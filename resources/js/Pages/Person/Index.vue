@@ -1,18 +1,23 @@
 <script setup>
+import { ref } from 'vue'
+import { Head, Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
-import CreatePersonModal from './Partials/CreatePersonModal.vue'
-import { Link } from '@inertiajs/inertia-vue3'
+import Modal from '@/Components/Modal.vue'
 
 const props = defineProps({
   data: Object,
   meta: Object,
 })
 
+let showModal = ref(false)
+
 </script>
 
 <template>
   <AppLayout>
-    <CreatePersonModal />
+
+    <Head title="People" />
+
     <div class="px-4 sm:px-6 lg:px-8">
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
@@ -20,7 +25,7 @@ const props = defineProps({
           <p class="mt-2 text-sm text-gray-700">A list of all the persons in your account including their name, title, email and role.</p>
         </div>
         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <Link :href="route('persons.create')" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add person</Link>
+          <button @click="showModal = true" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add a Person</button>
         </div>
       </div>
       <div class="mt-8 flex flex-col">
@@ -60,5 +65,21 @@ const props = defineProps({
         </div>
       </div>
     </div>
+    <Modal :show="showModal" maxWidth="xl" @close="showModal = false">
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-2">Register a New Person</h3>
+        <p class="text-gray-700 text-sm">This is where you register policyholders, damaged parties, or any other stakeholders involved in the insurance process</p>
+      </div>
+      <div class="grid grid-cols-2 gap-6">
+        <Link :href="route('naturalPersons.create')" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-8 flex flex-col justify-center items-center h-40 gap-8 rounded-lg">
+          <i class="fa-sharp fa-regular fa-person fa-2xl"></i>
+          Natural Person
+        </Link>
+        <Link :href="route('juridicalPersons.create')" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-8 flex flex-col justify-center items-center h-40 gap-8 rounded-lg">
+          <i class="fa-sharp fa-regular fa-building fa-2xl"></i>
+          Juridical Person
+        </Link>
+      </div>
+    </Modal>
   </AppLayout>
 </template>
