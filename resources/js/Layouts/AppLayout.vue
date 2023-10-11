@@ -93,39 +93,47 @@ const sidebarOpen = ref(false)
             <i class="fa-sharp fa-solid fa-bars" aria-hidden="true"></i>
           </button>
           <div class="flex flex-1 justify-between px-4 md:px-0">
-            <div class="flex flex-1">
-              <form class="flex w-full md:ml-0 items-center" action="#" method="GET">
-                <label for="search-field" class="sr-only">Search</label>
-                <div class="relative w-full text-gray-400 focus-within:text-gray-600 mx-2">
-                  <div class="pointer-events-none absolute inset-y-0 left-2 flex items-center">
-                    <i class="fa-solid fa-magnifying-glass fa-xs" aria-hidden="true"></i>
-                  </div>
-                  <input id="search-field" class="block h-8 w-40 focus:w-full rounded border border-gray-300 py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-indigo-500 focus:shadow-md focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search" />
-                </div>
-              </form>
+            <div class="flex-none flex gap-1 items-center">
+              <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 1</button>
+              <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 2</button>
+              <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 3</button>
+              <button class="bg-blue-500 text-white px-3 py-1.5 rounded text-sm font-bold hover:bg-blue-600">Create</button>
             </div>
-            <div class="ml-4 flex items-center md:ml-6">
-              <button type="button">
-                <span class="sr-only">View notifications</span>
-                <i class="fa-regular fa-bell h-8 w-8 p-3 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600" aria-hidden="true"></i>
-              </button>
+            <div class="flex flex-1">
+              <div class="flex flex-1">
+                <form class="flex w-full md:ml-0 items-center" action="#" method="GET">
+                  <label for="search-field" class="sr-only">Search</label>
+                  <div class="relative w-full text-gray-400 focus-within:text-gray-600 mx-2">
+                    <div class="pointer-events-none absolute inset-y-0 left-2 flex items-center">
+                      <i class="fa-solid fa-magnifying-glass fa-xs" aria-hidden="true"></i>
+                    </div>
+                    <input id="search-field" class="block h-8 w-40 focus:w-full rounded border border-gray-300 py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-indigo-500 focus:shadow-md focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search" />
+                  </div>
+                </form>
+              </div>
+              <div class="ml-4 flex items-center md:ml-6">
+                <button type="button">
+                  <span class="sr-only">View notifications</span>
+                  <i class="fa-regular fa-bell h-8 w-8 p-3 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600" aria-hidden="true"></i>
+                </button>
 
-              <!-- Profile dropdown -->
-              <Menu as="div" class="relative ml-3">
-                <div>
-                  <MenuButton class="flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                  </MenuButton>
-                </div>
-                <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                  <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                      <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">{{ item.name }}</Link>
-                    </MenuItem>
-                  </MenuItems>
-                </transition>
-              </Menu>
+                <!-- Profile dropdown -->
+                <Menu as="div" class="relative ml-3">
+                  <div>
+                    <MenuButton class="flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                      <span class="sr-only">Open user menu</span>
+                      <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                    </MenuButton>
+                  </div>
+                  <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                    <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
+                        <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">{{ item.name }}</Link>
+                      </MenuItem>
+                    </MenuItems>
+                  </transition>
+                </Menu>
+              </div>
             </div>
           </div>
         </div>
