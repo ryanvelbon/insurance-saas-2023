@@ -82,7 +82,7 @@ const sidebarOpen = ref(false)
     </TransitionRoot>
 
     <!-- Static sidebar for desktop -->
-    <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
+    <div class="hidden md:fixed md:inset-y-0 md:flex md:w-48 md:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
         <div class="flex flex-shrink-0 items-center px-4">
@@ -90,8 +90,8 @@ const sidebarOpen = ref(false)
         </div>
         <div class="mt-5 flex flex-grow flex-col">
           <nav class="flex-1 pb-4">
-            <Link v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group py-3 pl-6 flex items-center text-lg font-semibold']">
-              <i :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 flex-shrink-0 fa-regular', `fa-${item.icon}`, 'fa-lg']" aria-hidden="true"></i>
+            <Link v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group py-3 pl-6 flex items-center text-base']">
+              <i :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-1 flex-shrink-0 fa-light h-8 w-8 flex items-center', `fa-${item.icon}`, 'fa-lg']" aria-hidden="true"></i>
               {{ item.name }}
             </Link>
           </nav>
@@ -99,7 +99,7 @@ const sidebarOpen = ref(false)
       </div>
     </div>
 
-    <div class="md:pl-64">
+    <div class="md:pl-48">
       <div class="flex flex-col xl:px-0">
         <div class="sticky top-0 z-10 flex h-12 flex-shrink-0 border-b border-gray-200 bg-white pr-6 md:pl-6">
           <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" @click="sidebarOpen = true">
@@ -108,8 +108,8 @@ const sidebarOpen = ref(false)
           </button>
           <div class="flex flex-1 justify-between px-4 md:px-0">
             <div class="flex-none flex gap-1 items-center">
-              <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 1</button>
-              <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 2</button>
+              <button class="hidden md:block text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 1</button>
+              <button class="hidden md:block text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 2</button>
 
               <!-- Menu Button -->
               <Menu as="div" class="relative">
