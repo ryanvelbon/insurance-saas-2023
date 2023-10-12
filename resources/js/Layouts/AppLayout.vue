@@ -24,6 +24,20 @@ const userNavigation = [
   { name: 'Settings', href: '#' },
   { name: 'Sign out', href: route('logout'), method: 'POST' },
 ]
+const fooNavigation = [
+  { name: 'Foo', href: '#' },
+  { name: 'Bar', href: '#' },
+  { name: 'Lorem', href: '#' },
+]
+const createResourceNavigation = [
+  { name: 'Add a new person', href: '#', icon: 'address-card', description: 'From policyholders to stakeholders, easily register every individual or organization involved in your processes.' },
+  { name: 'Write up a policy', href: '#', icon: 'file-contract', description: 'Create a new insurance policy and specify the terms, conditions, coverage, and other details.' },
+  { name: 'File a claim', href: '#', icon: 'clipboard-list', description: 'on behalf of a customer who wishes to make a claim for insurance coverage.' },
+  { name: 'Record a payment', href: '#', icon: 'money-check-dollar-pen', description: '' },
+  { name: 'Upload a document', href: '#', icon: 'file-arrow-up', description: 'Upload contracts, invoices, receipts, or supporting documentation for claims.' },
+  { name: 'Generate a report', href: '#', icon: 'file-chart-column', description: 'Create customized reports based on data within your system. Reports can provide insights, statistics, or summaries of your business operations.' },
+  { name: 'Log activity', href: '#', icon: 'file-lines', description: 'Log significant events, meetings, or any other activities.' },
+]
 
 const sidebarOpen = ref(false)
 </script>
@@ -96,8 +110,42 @@ const sidebarOpen = ref(false)
             <div class="flex-none flex gap-1 items-center">
               <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 1</button>
               <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 2</button>
-              <button class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200">Dropdown 3</button>
-              <button class="bg-blue-500 text-white px-3 py-1.5 rounded text-sm font-bold hover:bg-blue-600">Create</button>
+
+              <!-- Menu Button -->
+              <Menu as="div" class="relative">
+                <div>
+                  <MenuButton class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200 focus:bg-indigo-200">
+                    Lorem
+                    <i class="fa-light fa-chevron-down ml-1"></i>
+                  </MenuButton>
+                </div>
+                <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                  <MenuItems class="absolute left-0 top-10 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <MenuItem v-for="item in fooNavigation" :key="item.name" v-slot="{ active }">
+                      <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">{{ item.name }}</Link>
+                    </MenuItem>
+                  </MenuItems>
+                </transition>
+              </Menu>
+
+              <!-- Create Resource -->
+              <Menu as="div" class="relative">
+                <div>
+                  <MenuButton class="bg-blue-500 text-white px-3 py-1.5 rounded text-sm font-bold hover:bg-blue-600">
+                    Create
+                  </MenuButton>
+                </div>
+                <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                  <MenuItems class="absolute left-0 top-10 z-10 mt-2 w-96 origin-top-right rounded-md bg-white py-3 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <MenuItem v-for="item in createResourceNavigation" :key="item.name" v-slot="{ active }">
+                      <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">
+                        <h4 class="text-gray-900 font-semibold text-sm mb-1"><i :class="`fa-regular fa-${item.icon} fa-sm mr-2`"></i>{{ item.name }}</h4>
+                        <p class="text-gray-600 text-xs">{{ item.description }}</p>
+                      </Link>
+                    </MenuItem>
+                  </MenuItems>
+                </transition>
+              </Menu>
             </div>
             <div class="flex flex-1">
               <div class="flex flex-1">
@@ -126,7 +174,7 @@ const sidebarOpen = ref(false)
                     </MenuButton>
                   </div>
                   <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                    <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <MenuItems class="absolute right-0 top-10 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
                         <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">{{ item.name }}</Link>
                       </MenuItem>
