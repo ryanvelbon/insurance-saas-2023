@@ -20,9 +20,9 @@ const navigation = [
   { name: 'Team', href: route('team-members.index'), icon: 'people-group', current: route().current('team-members.index') },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: route('profile.edit') },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: route('logout'), method: 'POST' },
+  { name: 'Your Profile', href: route('profile.edit'), icon: 'user' },
+  { name: 'Settings', href: '#', icon: 'gear' },
+  { name: 'Sign out', href: route('logout'), method: 'POST', icon: 'right-from-bracket' },
 ]
 const fooNavigation = [
   { name: 'Foo', href: '#' },
@@ -176,7 +176,10 @@ const sidebarOpen = ref(false)
                   <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                     <MenuItems class="absolute right-0 top-10 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                        <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">{{ item.name }}</Link>
+                        <Link :href="item.href" :method="item.method" :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">
+                          <i :class="`fa-regular fa-${item.icon} mr-3`"></i>
+                          {{ item.name }}
+                        </Link>
                       </MenuItem>
                     </MenuItems>
                   </transition>
