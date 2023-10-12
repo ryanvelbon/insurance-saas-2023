@@ -13,11 +13,14 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 
-const navigation = [
+const sidebarTopNavigation = [
   { name: 'Dashboard', href: route('dashboard'), icon: 'home', current: route().current('dashboard') },
   { name: 'Persons', href: route('persons.index'), icon: 'address-book', current: route().current('persons.index') },
   { name: 'Policies', href: route('policies.index'), icon: 'file-contract', current: route().current('policies.index') },
+]
+const sidebarBottomNavigation = [
   { name: 'Team', href: route('team-members.index'), icon: 'people-group', current: route().current('team-members.index') },
+  { name: 'Settings', href: '#', icon: 'gear', current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: route('profile.edit'), icon: 'user' },
@@ -66,7 +69,7 @@ const sidebarOpen = ref(false)
               </div>
               <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="space-y-1 px-2">
-                  <Link v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group rounded-md py-2 px-2 flex items-center text-base font-medium']">
+                  <Link v-for="item in sidebarTopNavigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group rounded-md py-2 px-2 flex items-center text-base font-medium']">
                     <i :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-3 flex-shrink-0 fa-regular', `fa-${item.icon}`, 'fa-lg']" aria-hidden="true"></i>
                     {{ item.name }}
                   </Link>
@@ -89,8 +92,14 @@ const sidebarOpen = ref(false)
           <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
         </div>
         <div class="mt-5 flex flex-grow flex-col">
-          <nav class="flex-1 pb-4">
-            <Link v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group py-3 pl-6 flex items-center text-base']">
+          <nav class="flex-1">
+            <Link v-for="item in sidebarTopNavigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group py-3 pl-6 flex items-center text-base']">
+              <i :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-1 flex-shrink-0 fa-light h-8 w-8 flex items-center', `fa-${item.icon}`, 'fa-lg']" aria-hidden="true"></i>
+              {{ item.name }}
+            </Link>
+          </nav>
+          <nav class="flex-none">
+            <Link v-for="item in sidebarBottomNavigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group py-3 pl-6 flex items-center text-base']">
               <i :class="[item.current ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-1 flex-shrink-0 fa-light h-8 w-8 flex items-center', `fa-${item.icon}`, 'fa-lg']" aria-hidden="true"></i>
               {{ item.name }}
             </Link>
