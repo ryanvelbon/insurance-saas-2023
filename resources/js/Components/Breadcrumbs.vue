@@ -1,5 +1,4 @@
 <script setup>
-import { HomeIcon } from '@heroicons/vue/20/solid'
 import { Link } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
@@ -13,7 +12,7 @@ const props = defineProps({
             <li>
                 <div>
                     <Link :href="route('dashboard')" class="text-gray-400 hover:text-gray-500">
-                        <HomeIcon class="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                        <i class="fa-solid fa-home" aria-hidden="true"></i>
                         <span class="sr-only">Home</span>
                     </Link>
                 </div>
