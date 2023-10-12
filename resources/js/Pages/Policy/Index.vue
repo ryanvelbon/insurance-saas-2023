@@ -35,38 +35,38 @@ let showModal = ref(false)
                             <table class="min-w-full divide-y divide-gray-300">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Category</th>
-                                        <th scope="col" class="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Policy No.</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Coverage</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Starts</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Ends</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Layer</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Currency</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Gross Prem.</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Brokerage</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Excess</th>
-                                        <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Limit</th>
-                                        <th scope="col" class="relative whitespace-nowrap py-3.5 pl-3 pr-4 sm:pr-6">
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Policy No.</th>
+                                        <th scope="col">Coverage</th>
+                                        <th scope="col">Starts</th>
+                                        <th scope="col">Ends</th>
+                                        <th scope="col">Layer</th>
+                                        <th scope="col">Currency</th>
+                                        <th scope="col" class="text-right">Gross Prem.</th>
+                                        <th scope="col" class="text-right">Brokerage</th>
+                                        <th scope="col" class="text-right">Excess</th>
+                                        <th scope="col" class="text-right">Limit</th>
+                                        <th scope="col">
                                             <span class="sr-only">Edit</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
                                     <tr v-for="policy in data.policies" :key="policy.id">
-                                        <td class="whitespace-nowrap px-2 py-2 text-xs text-gray-500">{{ policy.category }}</td>
-                                        <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">{{ policy.policy_no }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-xs text-gray-500">{{ policy.coverage_type }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.start_date }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.end_date }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-xs text-gray-500">{{ policy.layer }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.currency }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.gross_premium }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.brokerage_deduction }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.excess }}</td>
-                                        <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ policy.limit_amount }}</td>
+                                        <td class="text-center">{{ policy.category }}</td>
+                                        <td class="text-center">{{ policy.policy_no }}</td>
+                                        <td class="text-center">{{ policy.coverage_type }}</td>
+                                        <td class="text-center">{{ policy.start_date }}</td>
+                                        <td class="text-center">{{ policy.end_date }}</td>
+                                        <td class="text-center">{{ policy.layer }}</td>
+                                        <td class="text-center">{{ policy.currency }}</td>
+                                        <td class="text-right">{{ policy.gross_premium }}</td>
+                                        <td class="text-right">{{ policy.brokerage_deduction }}</td>
+                                        <td class="text-right">{{ policy.excess }}</td>
+                                        <td class="text-right">{{ policy.limit_amount }}</td>
 
-                                        <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                                        <td class="">
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900 font-sans"
                                                 >Edit<span class="sr-only">, {{ policy.id }}</span></a
                                             >
                                         </td>
@@ -99,3 +99,13 @@ let showModal = ref(false)
         </Modal>
     </AppLayout>
 </template>
+
+<style scoped>
+th {
+    @apply whitespace-nowrap px-2 py-3.5 text-sm font-semibold text-gray-900;
+}
+
+td {
+    @apply whitespace-nowrap px-2 py-2 text-gray-500 text-base font-mono;
+}
+</style>
