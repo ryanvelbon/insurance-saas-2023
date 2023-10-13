@@ -26,6 +26,11 @@ class PolicyIndexResource extends JsonResource
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
 
+            'agent' => [
+                'id' => $this->agent->id,
+                'name' => $this->agent->name,
+            ],
+
             'insurer' => [
                 'id' => $this->insurer->id,
                 'name' => $this->insurer->name,
