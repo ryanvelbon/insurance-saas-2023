@@ -71,21 +71,21 @@ let showModal = ref(false)
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
-                                    <tr v-for="policy in data.policies" :key="policy.id">
-                                        <td class="text-center">{{ policy.category }}</td>
-                                        <td class="text-center">{{ policy.policy_no }}</td>
-                                        <td class="text-center">{{ policy.coverage_type }}</td>
-                                        <td class="text-center">{{ policy.start_date }}</td>
-                                        <td class="text-center">{{ policy.end_date }}</td>
-                                        <td class="text-center">{{ policy.layer }}</td>
-                                        <td v-show="showFinancialDetails" class="text-center">{{ policy.currency }}</td>
-                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.gross_premium }}</td>
-                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.brokerage_deduction }}</td>
-                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.excess }}</td>
-                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.limit_amount }}</td>
-                                        <td v-show="!showFinancialDetails" class="text-left">{{ policy.agent.name }}</td>
-                                        <td v-show="!showFinancialDetails" class="text-left">{{ policy.insurer.name }}</td>
-                                        <td v-show="!showFinancialDetails" class="text-left">{{ policy.policyholder.name }}</td>
+                                    <tr v-for="policy in data.policies" :key="policy.id" class="hover:bg-gray-100">
+                                        <td class="text text-center">{{ policy.category }}</td>
+                                        <td class="numeric text-center">{{ policy.policy_no }}</td>
+                                        <td class="text text-center">{{ policy.coverage_type }}</td>
+                                        <td class="numeric text-center">{{ policy.start_date }}</td>
+                                        <td class="numeric text-center">{{ policy.end_date }}</td>
+                                        <td class="text text-center">{{ policy.layer }}</td>
+                                        <td v-show="showFinancialDetails" class="numeric text-center">{{ policy.currency }}</td>
+                                        <td v-show="showFinancialDetails" class="numeric text-right">{{ policy.gross_premium }}</td>
+                                        <td v-show="showFinancialDetails" class="numeric text-right">{{ policy.brokerage_deduction }}</td>
+                                        <td v-show="showFinancialDetails" class="numeric text-right">{{ policy.excess }}</td>
+                                        <td v-show="showFinancialDetails" class="numeric text-right">{{ policy.limit_amount }}</td>
+                                        <td v-show="!showFinancialDetails" class="text text-left">{{ policy.agent.name }}</td>
+                                        <td v-show="!showFinancialDetails" class="text text-left">{{ policy.insurer.name }}</td>
+                                        <td v-show="!showFinancialDetails" class="text text-left">{{ policy.policyholder.name }}</td>
 
                                         <td>
                                             <Link :href="route('policies.show', policy.id)">
@@ -95,7 +95,7 @@ let showModal = ref(false)
                                         </td>
 
                                         <td class="">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900 font-sans"
+                                            <a href="#" class="text-indigo-600 hover:text-indigo-900"
                                                 >Edit<span class="sr-only">, {{ policy.id }}</span></a
                                             >
                                         </td>
@@ -140,7 +140,15 @@ th {
 }
 
 td {
-    @apply whitespace-nowrap px-2 py-2 text-gray-500 text-base font-mono;
+    @apply whitespace-nowrap px-2 py-2 text-gray-700 text-sm;
+}
+
+td.text {
+    @apply font-sans;
+}
+
+td.numeric {
+    @apply font-mono;
 }
 
 </style>
