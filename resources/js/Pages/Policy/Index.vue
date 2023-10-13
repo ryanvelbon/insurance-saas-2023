@@ -9,6 +9,7 @@ const props = defineProps({
     meta: Object,
 })
 
+let showFinancialDetails = ref(false)
 let showModal = ref(false)
 
 </script>
@@ -38,6 +39,9 @@ let showModal = ref(false)
 
             <!-- Data Table -->
             <section class="px-4 sm:px-6 lg:px-8 mt-8 flex flex-col">
+                <div class="my-3">
+                    <button @click="showFinancialDetails = !showFinancialDetails" class="bg-gray-100 text-gray-600 hover:bg-gray-200 px-2 py-1 rounded border border-gray-400">Toggle View</button>
+                </div>
                 <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                         <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -46,18 +50,18 @@ let showModal = ref(false)
                                     <tr>
                                         <th scope="col">Category</th>
                                         <th scope="col">Policy No.</th>
-                                        <th scope="col" class="text-left">Agent</th>
-                                        <th scope="col" class="text-left">Insurer</th>
-                                        <th scope="col" class="text-left">Policyholder</th>
                                         <th scope="col">Coverage</th>
                                         <th scope="col">Starts</th>
                                         <th scope="col">Ends</th>
                                         <th scope="col">Layer</th>
-                                        <th scope="col">Currency</th>
-                                        <th scope="col" class="text-right">Gross Prem.</th>
-                                        <th scope="col" class="text-right">Brokerage</th>
-                                        <th scope="col" class="text-right">Excess</th>
-                                        <th scope="col" class="text-right">Limit</th>
+                                        <th v-show="showFinancialDetails" scope="col">Currency</th>
+                                        <th v-show="showFinancialDetails" scope="col" class="text-right">Gross Prem.</th>
+                                        <th v-show="showFinancialDetails" scope="col" class="text-right">Brokerage</th>
+                                        <th v-show="showFinancialDetails" scope="col" class="text-right">Excess</th>
+                                        <th v-show="showFinancialDetails" scope="col" class="text-right">Limit</th>
+                                        <th v-show="!showFinancialDetails" scope="col" class="text-left">Agent</th>
+                                        <th v-show="!showFinancialDetails" scope="col" class="text-left">Insurer</th>
+                                        <th v-show="!showFinancialDetails" scope="col" class="text-left">Policyholder</th>
                                         <th scope="col">
                                             <span class="sr-only">View</span>
                                         </th>
@@ -70,18 +74,18 @@ let showModal = ref(false)
                                     <tr v-for="policy in data.policies" :key="policy.id">
                                         <td class="text-center">{{ policy.category }}</td>
                                         <td class="text-center">{{ policy.policy_no }}</td>
-                                        <td class="text-left">{{ policy.agent.name }}</td>
-                                        <td class="text-left">{{ policy.insurer.name }}</td>
-                                        <td class="text-left">{{ policy.policyholder.name }}</td>
                                         <td class="text-center">{{ policy.coverage_type }}</td>
                                         <td class="text-center">{{ policy.start_date }}</td>
                                         <td class="text-center">{{ policy.end_date }}</td>
                                         <td class="text-center">{{ policy.layer }}</td>
-                                        <td class="text-center">{{ policy.currency }}</td>
-                                        <td class="text-right">{{ policy.gross_premium }}</td>
-                                        <td class="text-right">{{ policy.brokerage_deduction }}</td>
-                                        <td class="text-right">{{ policy.excess }}</td>
-                                        <td class="text-right">{{ policy.limit_amount }}</td>
+                                        <td v-show="showFinancialDetails" class="text-center">{{ policy.currency }}</td>
+                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.gross_premium }}</td>
+                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.brokerage_deduction }}</td>
+                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.excess }}</td>
+                                        <td v-show="showFinancialDetails" class="text-right">{{ policy.limit_amount }}</td>
+                                        <td v-show="!showFinancialDetails" class="text-left">{{ policy.agent.name }}</td>
+                                        <td v-show="!showFinancialDetails" class="text-left">{{ policy.insurer.name }}</td>
+                                        <td v-show="!showFinancialDetails" class="text-left">{{ policy.policyholder.name }}</td>
 
                                         <td>
                                             <Link :href="route('policies.show', policy.id)">
