@@ -73,4 +73,9 @@ class NaturalPerson extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

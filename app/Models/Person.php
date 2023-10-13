@@ -30,6 +30,8 @@ class Person extends Model
         'deleted_at',
     ];
 
+    protected $appends = ['name'];
+
     protected $fillable = [
         'email',
         'phone',
@@ -64,5 +66,27 @@ class Person extends Model
     public function scopeJuridical($query)
     {
         return $query->where('type', self::TYPE_JURIDICAL);
+    }
+
+    public function getNameAttribute()
+    {
+        if ($this->type === self::TYPE_NATURAL) {
+            return $this->profile->fullName;
+        } else if ($this->type === self::TYPE_JURIDICAL) {
+            return $this->profile->name;
+        } else {
+            return null;
+        }
+    }
+
+    public function getProfileAttribute()
+    {
+        if ($this->type === self::TYPE_NATURAL) {
+            return NaturalPerson::where('person_id', $this->id)->first();
+        } else if ($this->type === self::TYPE_JURIDICAL) {
+            return JuridicalPerson::where('person_id', $this->id)->first();
+        } else {
+            return null;
+        }
     }
 }
