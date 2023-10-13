@@ -46,6 +46,8 @@ let showModal = ref(false)
                                     <tr>
                                         <th scope="col">Category</th>
                                         <th scope="col">Policy No.</th>
+                                        <th scope="col">Insurer</th>
+                                        <th scope="col">Policyholder</th>
                                         <th scope="col">Coverage</th>
                                         <th scope="col">Starts</th>
                                         <th scope="col">Ends</th>
@@ -64,6 +66,8 @@ let showModal = ref(false)
                                     <tr v-for="policy in data.policies" :key="policy.id">
                                         <td class="text-center">{{ policy.category }}</td>
                                         <td class="text-center">{{ policy.policy_no }}</td>
+                                        <td class="text-left">{{ policy.insurer.name }}</td>
+                                        <td class="text-left">{{ policy.policyholder.name }}</td>
                                         <td class="text-center">{{ policy.coverage_type }}</td>
                                         <td class="text-center">{{ policy.start_date }}</td>
                                         <td class="text-center">{{ policy.end_date }}</td>

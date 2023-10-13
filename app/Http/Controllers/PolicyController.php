@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Gate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Resources\PolicyIndexResource;
 use App\Models\InsuranceCategory;
 use App\Models\Policy;
 
@@ -18,7 +19,7 @@ class PolicyController extends Controller
         return Inertia::render('Policy/Index', [
             'data' => [
                 'categories' => $categories,
-                'policies' => $policies,
+                'policies' => PolicyIndexResource::collection($policies),
             ],
             'meta' => [
 
