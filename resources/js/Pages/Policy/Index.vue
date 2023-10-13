@@ -58,6 +58,9 @@ let showModal = ref(false)
                                         <th scope="col" class="text-right">Excess</th>
                                         <th scope="col" class="text-right">Limit</th>
                                         <th scope="col">
+                                            <span class="sr-only">View</span>
+                                        </th>
+                                        <th scope="col">
                                             <span class="sr-only">Edit</span>
                                         </th>
                                     </tr>
@@ -77,6 +80,13 @@ let showModal = ref(false)
                                         <td class="text-right">{{ policy.brokerage_deduction }}</td>
                                         <td class="text-right">{{ policy.excess }}</td>
                                         <td class="text-right">{{ policy.limit_amount }}</td>
+
+                                        <td>
+                                            <Link :href="route('policies.show', policy.id)">
+                                                View
+                                                <span class="sr-only">{{ policy.id }}</span>
+                                            </Link>
+                                        </td>
 
                                         <td class="">
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900 font-sans"

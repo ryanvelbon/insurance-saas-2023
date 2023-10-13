@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Gate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 use App\Http\Resources\PolicyIndexResource;
+use App\Http\Resources\PolicyShowResource;
 use App\Models\InsuranceCategory;
 use App\Models\Policy;
 
@@ -24,6 +26,15 @@ class PolicyController extends Controller
             'meta' => [
 
             ],
+        ]);
+    }
+
+    public function show($id): Response
+    {
+        $policy = Policy::findOrFail($id)->load(['insurer', 'policyholder', 'agent']);
+
+        return Inertia::render('Policy/Show', [
+            'policy' => new PolicyShowResource($policy),
         ]);
     }
 
