@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Gate;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Http\Requests\StorePolicyRequest;
 use App\Http\Resources\PolicyIndexResource;
 use App\Http\Resources\PolicyShowResource;
 use App\Models\InsuranceCategory;
@@ -42,11 +44,25 @@ class PolicyController extends Controller
     {
         return Inertia::render('Policy/Create', [
             'data' => [
-                'selectedCategory' => $category
+                'selectedCategory' => $category,
+
+                'select' => [
+                    'coverageTypes' => Policy::COVERAGE_TYPE_SELECT,
+                    'layers' => Policy::LAYER_SELECT,
+                    'status' => Policy::STATUS_SELECT,
+                ],
             ],
             'meta' => [
 
             ],
         ]);
+    }
+
+    public function store(StorePolicyRequest $request): RedirectResponse
+    {
+        $policy = new Policy($request->validated());
+
+        return redirect()->route('policies.index')
+            ->with('success', 'New Policy has been created.');
     }
 }
