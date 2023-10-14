@@ -27,12 +27,14 @@ const breadcrumbPages = [
                     <button class="btn">Click</button>
                     <button class="btn"><i class="fa-light fa-envelope"></i></button>
                 </div>
-                <div>
-                    <button class="btn">Click</button>
+                <div class="flex gap-2">
+                    <button class="btn">Edit</button>
+                    <button class="btn">Delete</button>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 mb-8">
-                <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-md">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
+                <div class="card lg:col-span-2">
+                    <h2 class="heading-label">Policy</h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                         <div class="md:col-span-2">
                             <div class="field-name">Policy Number</div>
@@ -78,17 +80,17 @@ const breadcrumbPages = [
                         </div>
                     </div>
                 </div>
-                <div class="bg-blue-200">
+                <div class="card">
                     stats, e.g., claims, payouts, etc.
                 </div>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                <article>
-                    <h3>Policyholder</h3>
+                <article class="card">
+                    <h3 class="heading-label">Policyholder</h3>
                 </article>
-                <article>
-                    <h3>Insurer</h3>
-                    <h4>{{ policy.insurer.name }}</h4>
+                <article class="card">
+                    <h3 class="heading-label">Insurer</h3>
+                    <h4 class="stakeholder-name">{{ policy.insurer.name }}</h4>
                     <ul class="contact-details">
                         <li>
                             <i class="fa-light fa-link fa-sm"></i>
@@ -104,9 +106,9 @@ const breadcrumbPages = [
                         </li>
                     </ul>
                 </article>
-                <article>
-                    <h3>Agent</h3>
-                    <h4>{{ policy.agent.name }}</h4>
+                <article class="card">
+                    <h3 class="heading-label">Agent</h3>
+                    <h4 class="stakeholder-name">{{ policy.agent.name }}</h4>
                     <ul class="contact-details">
                         <li>
                             <i class="fa-light fa-envelope fa-sm"></i>
@@ -115,7 +117,8 @@ const breadcrumbPages = [
                     </ul>
                 </article>
             </div>
-            <div class="bg-blue-200 mt-8">
+            <div class="card mt-8 mb-8">
+                <h3 class="heading-label">Log</h3>
                 log stuff here (e.g., claims)
             </div>
         </div>
@@ -123,26 +126,25 @@ const breadcrumbPages = [
 </template>
 
 <style>
+.btn {
+    @apply bg-gray-100 border border-gray-300 px-3 py-1.5 text-xs uppercase rounded text-gray-500 hover:bg-gray-200 hover:border-gray-400 hover:text-gray-600 hover:shadow;
+}
+.card {
+    @apply bg-white p-8 rounded-lg shadow-lg;
+}
+.heading-label {
+    @apply text-xl font-bold text-blue-600 mb-6;
+}
 .field-name {
     @apply text-xs uppercase text-gray-500 mb-1 font-semibold;
 }
 .field-value {
     @apply text-gray-800 text-xl font-semibold;
 }
-article {
-    @apply bg-white p-8 rounded-lg shadow-md;
-}
-article h3 {
-    @apply text-xl font-bold text-gray-800 mb-6;
-}
-article h4 {
+.stakeholder-name {
     @apply font-bold mb-3;
 }
-article .contact-details {
+.contact-details {
     @apply text-sm flex flex-col gap-2;
-}
-
-.btn {
-    @apply bg-gray-100 border border-gray-300 px-3 py-1.5 text-xs uppercase rounded text-gray-500 hover:bg-gray-200 hover:border-gray-400 hover:text-gray-600 hover:shadow;
 }
 </style>
