@@ -44,6 +44,7 @@ class JuridicalPersonController extends Controller
             'website' => $request->input('website'),
         ]);
 
-        return redirect()->route('persons.index');
+        return redirect()->route('persons.index')
+            ->with('success', 'New Person record has been created.');
     }
 }

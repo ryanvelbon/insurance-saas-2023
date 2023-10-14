@@ -46,6 +46,7 @@ class NaturalPersonController extends Controller
             'marital_status' => $request->input('maritalStatus'),
         ]);
 
-        return redirect()->route('persons.index');
+        return redirect()->route('persons.index')
+            ->with('success', 'New Person record has been created.');
     }
 }
