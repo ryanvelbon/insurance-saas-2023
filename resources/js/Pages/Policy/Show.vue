@@ -118,6 +118,10 @@ const breadcrumbPages = [
                 </article>
             </div>
             <div class="card mt-8 mb-8">
+                <h3 class="heading-label">Extension Fields</h3>
+                displays data that is specific to the {{ policy.category }} insurance category
+            </div>
+            <div class="card mb-8">
                 <h3 class="heading-label">Log</h3>
                 log stuff here (e.g., claims)
             </div>
