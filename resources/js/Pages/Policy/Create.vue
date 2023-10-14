@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { Head, useForm } from '@inertiajs/inertia-vue3'
-import AppLayout from '@/Layouts/AppLayout.vue'
 import Breadcrumbs from '@/Components/Breadcrumbs.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
@@ -27,58 +26,56 @@ const breadcrumbPages = [
 </script>
 
 <template>
-    <AppLayout>
-        <Head title="Create a New Policy" />
-        <Breadcrumbs :pages="breadcrumbPages" />
-        <div class="bg-blue-200">
-            <form @submit.prevent="submit" autocomplete="off">
-                <div class="grid grid-cols-2">
-                    <div class="bg-green-200">
-                        Policyholder
-                        <input type="text" name="">
+    <Head title="Create a New Policy" />
+    <Breadcrumbs :pages="breadcrumbPages" />
+    <div class="bg-blue-200">
+        <form @submit.prevent="submit" autocomplete="off">
+            <div class="grid grid-cols-2">
+                <div class="bg-green-200">
+                    Policyholder
+                    <input type="text" name="">
+                </div>
+                <div class="flex justify-evenly">
+                    <div>
+                        <InputLabel for="startDate" value="Start date" />
+                        <TextInput
+                            id="startDate"
+                            type="date"
+                            v-model="form.startDate"
+                            class="mt-1 block"
+                            required
+                        />
+                        <InputError class="mt-2" :message="form.errors.startDate" />
                     </div>
-                    <div class="flex justify-evenly">
-                        <div>
-                            <InputLabel for="startDate" value="Start date" />
-                            <TextInput
-                                id="startDate"
-                                type="date"
-                                v-model="form.startDate"
-                                class="mt-1 block"
-                                required
-                            />
-                            <InputError class="mt-2" :message="form.errors.startDate" />
-                        </div>
-                        <div>
-                            <InputLabel for="endDate" value="End date" />
-                            <TextInput
-                                id="endDate"
-                                type="date"
-                                v-model="form.endDate"
-                                class="mt-1 block"
-                                required
-                            />
-                            <InputError class="mt-2" :message="form.errors.endDate" />
-                        </div>
+                    <div>
+                        <InputLabel for="endDate" value="End date" />
+                        <TextInput
+                            id="endDate"
+                            type="date"
+                            v-model="form.endDate"
+                            class="mt-1 block"
+                            required
+                        />
+                        <InputError class="mt-2" :message="form.errors.endDate" />
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="bg-red-200">
-
-            <!-- Motor Specific Fields -->
-            <div v-if="data.selectedCategory === 'motor'">
-                <MotorFields />
             </div>
+        </form>
+    </div>
+    <div class="bg-red-200">
 
-            <!-- Travel Specific Fields -->
-            <div v-if="data.selectedCategory === 'travel'">
-                <TravelFields />
-            </div>
+        <!-- Motor Specific Fields -->
+        <div v-if="data.selectedCategory === 'motor'">
+            <MotorFields />
+        </div>
 
+        <!-- Travel Specific Fields -->
+        <div v-if="data.selectedCategory === 'travel'">
+            <TravelFields />
         </div>
-        <div class="bg-blue-200">
-            Perils
-        </div>
-    </AppLayout>
+
+    </div>
+    <div class="bg-blue-200">
+        Perils
+    </div>
 </template>
