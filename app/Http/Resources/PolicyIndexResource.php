@@ -10,7 +10,6 @@ class PolicyIndexResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'category' => $this->category,
             'policy_no' => $this->policy_no,
             'coverage_type' => $this->coverage_type,
             'start_date' => $this->start_date,
@@ -25,6 +24,8 @@ class PolicyIndexResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
+
+            'category' => $this->category, // this returns an InsuranceCategory object
 
             'agent' => [
                 'id' => $this->agent->id,

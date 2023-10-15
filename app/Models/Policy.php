@@ -75,7 +75,7 @@ class Policy extends Model
     ];
 
     protected $fillable = [
-        'category',
+        'category_id',
         'policy_no',
         'insurer_id',
         'policyholder_id',
@@ -131,9 +131,9 @@ class Policy extends Model
         return $this->belongsTo(User::class, 'agent_id');
     }
 
-    public function insuranceCategory()
+    public function category()
     {
-        return $this->belongsTo(InsuranceCategory::class, 'category', 'slug');
+        return $this->belongsTo(InsuranceCategory::class, 'category_id');
     }
 
     public function team()

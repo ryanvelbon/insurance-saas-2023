@@ -14,7 +14,7 @@ class StorePolicyRequest extends FormRequest
     public function rules()
     {
         return [
-            'category' => 'required|exists:insurance_categories,slug',
+            'category_id' => 'required|exists:insurance_categories,id',
             'policy_no' => 'required|string|max:255|unique:policies',
             'coverage_type' => 'required|string|max:255',
             'start_date' => 'required|date',

@@ -53,7 +53,7 @@ class PoliciesTableSeeder extends Seeder
             $brokerCommissionRate = rand(5,20)/100; // 5% to 20%
 
             Policy::create([
-                'category' => InsuranceCategory::inRandomOrder()->first()->slug,
+                'category_id' => InsuranceCategory::inRandomOrder()->first()->id,
                 'policy_no' => rand(1000000, 9999999), // *PENDING* each insurer should have its own format
                 'coverage_type' => $coverageType,
                 'start_date' => $startDate,

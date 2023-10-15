@@ -64,7 +64,7 @@ Route::post('/juridical-persons', [JuridicalPersonController::class, 'store'])->
 
 
 // Policies
+Route::get('/policies/create', [PolicyController::class, 'create'])->name('policies.create');
 Route::get('/policies/{id}', [PolicyController::class, 'show'])->name('policies.show');
 Route::get('/policies', [PolicyController::class, 'index'])->name('policies.index');
-Route::get('/policies/create/{category}', [PolicyController::class, 'create'])->name('policies.create');
 Route::post('/policies', [PolicyController::class, 'store'])->name('policies.store');

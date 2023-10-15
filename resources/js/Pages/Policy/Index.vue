@@ -72,7 +72,10 @@ let showModal = ref(false)
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
                                     <tr v-for="policy in data.policies" :key="policy.id" class="hover:bg-gray-100">
-                                        <td class="text text-center">{{ policy.category }}</td>
+                                        <td class="text text-left">
+                                            <i :class="`fa-light fa-${policy.category.icon} mr-2`"></i>
+                                            {{ policy.category.title }}
+                                        </td>
                                         <td class="numeric text-center">{{ policy.policy_no }}</td>
                                         <td class="text text-center">{{ policy.coverage_type }}</td>
                                         <td class="numeric text-center">{{ policy.start_date }}</td>
@@ -115,8 +118,8 @@ let showModal = ref(false)
             <div class="grid grid-cols-2 md:grid-cols-3">
                 <Link
                     v-for="category in data.categories"
-                    :key="category.slug"
-                    :href="route('policies.create', category.slug)"
+                    :key="category.id"
+                    :href="route('policies.create', { categoryId: category.id })"
                     class="bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-lg shadow-lg h-40 p-8 m-2 text-lg font-bold flex flex-col gap-8 justify-center items-center"
                 >
                     <i :class="`fa-light fa-${category.icon} fa-2xl`"></i>

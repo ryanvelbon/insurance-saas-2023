@@ -40,11 +40,13 @@ class PolicyController extends Controller
         ]);
     }
 
-    public function create($category)
+    public function create(Request $request)
     {
+        $categoryId = $request->query('categoryId');
+
         return Inertia::render('Policy/Create', [
             'data' => [
-                'selectedCategory' => $category,
+                'selectedCategory' => $categoryId,
 
                 'select' => [
                     'coverageTypes' => Policy::COVERAGE_TYPE_SELECT,

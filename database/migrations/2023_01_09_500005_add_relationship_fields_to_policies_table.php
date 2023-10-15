@@ -9,6 +9,8 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
     public function up()
     {
         Schema::table('policies', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('insurance_categories');
             $table->unsignedBigInteger('insurer_id');
             $table->foreign('insurer_id')->references('id')->on('insurers');
             $table->unsignedBigInteger('policyholder_id');
@@ -23,6 +25,7 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
     public function down()
     {
         Schema::table('policies', static function (Blueprint $table) {
+            $table->dropForeign('policies_category_id_foreign');
             $table->dropForeign('policies_insurer_id_foreign');
             $table->dropForeign('policies_policyholder_id_foreign');
             $table->dropForeign('policies_agent_id_foreign');

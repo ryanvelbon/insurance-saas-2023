@@ -26,8 +26,6 @@ class PolicyTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->actingAs($user)->get('/policies/life/create')->assertStatus(200);
-        $this->actingAs($user)->get('/policies/motor/create')->assertStatus(200);
-        $this->actingAs($user)->get('/policies/travel/create')->assertStatus(200);
+        $this->actingAs($user)->get('/policies/create')->assertStatus(200);
     }
 }

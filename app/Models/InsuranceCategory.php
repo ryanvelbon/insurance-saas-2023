@@ -10,6 +10,6 @@ class InsuranceCategory extends Model
 
     public function policies()
     {
-        return $this->hasMany(Policy::class, 'category', 'slug');
+        return $this->hasMany(Policy::class, 'category_id');
     }
 }
