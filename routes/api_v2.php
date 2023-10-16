@@ -1,17 +1,16 @@
 <?php
 
-use App\Http\Controllers\Api\V1\StaticDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routes (version 2)
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| Here is where you can register API version 2 routes for your application.
+|
+| READ: https://laraveldaily.com/post/laravel-api-versioning-v1-v2
 |
 */
 
@@ -19,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('static-data', [StaticDataController::class, 'index']);
+Route::get('hello', function() {
+    return "Hello, this is API v2";
+});
