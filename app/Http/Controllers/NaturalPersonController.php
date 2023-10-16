@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNaturalPersonRequest;
 // use App\Http\Requests\UpdateNaturalPersonRequest;
-use App\Models\Country;
 use App\Models\Person;
 use App\Models\NaturalPerson;
 use Gate;
@@ -21,7 +20,6 @@ class NaturalPersonController extends Controller
             'data' => [
                 'genderChoices' => NaturalPerson::GENDER_SELECT,
                 'maritalStatusChoices' => NaturalPerson::MARITAL_STATUS_SELECT,
-                'countries' => Country::all(),
             ],
         ]);
     }

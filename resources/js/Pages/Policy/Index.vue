@@ -3,11 +3,14 @@ import { ref } from 'vue'
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import Modal from '@/Components/Modal.vue'
+import { useStaticDataStore } from '@/stores/staticData'
 
 const props = defineProps({
     data: Object,
     meta: Object,
 })
+
+const staticData = useStaticDataStore()
 
 let showFinancialDetails = ref(false)
 let showModal = ref(false)
@@ -117,7 +120,7 @@ let showModal = ref(false)
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3">
                 <Link
-                    v-for="category in data.categories"
+                    v-for="category in staticData.collections.categories"
                     :key="category.id"
                     :href="route('policies.create', { categoryId: category.id })"
                     class="bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-lg shadow-lg h-40 p-8 m-2 text-lg font-bold flex flex-col gap-8 justify-center items-center"

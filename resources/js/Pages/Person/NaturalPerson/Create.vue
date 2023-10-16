@@ -6,6 +6,7 @@ import InputError from '@/Components/InputError.vue'
 import TextInput from '@/Components/TextInput.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import DropdownA from '@/Components/DropdownA.vue'
+import { useStaticDataStore } from '@/stores/staticData'
 import { Head, useForm } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
@@ -13,12 +14,7 @@ const props = defineProps({
     meta: Object,
 })
 
-const countries = props.data.countries.map(function(obj) {
-    return {
-        label: obj.nicename,
-        value: obj.id
-    }
-})
+const staticData = useStaticDataStore()
 
 const form = useForm({
     email: '',
@@ -95,7 +91,7 @@ const submit = () => {
                             <InputLabel for="nationality" value="Nationality" />
                             <DropdownA
                                 id="nationality"
-                                :items="countries"
+                                :items="staticData.dropdowns.countries"
                                 v-model="form.nationality"
                                 class="mt-1 block"
                                 required
@@ -171,7 +167,7 @@ const submit = () => {
                         <InputLabel for="domicile" value="Domicile Country" />
                             <DropdownA
                                 id="domicile"
-                                :items="countries"
+                                :items="staticData.dropdowns.countries"
                                 v-model="form.domicile"
                                 class="mt-1 block"
                                 required

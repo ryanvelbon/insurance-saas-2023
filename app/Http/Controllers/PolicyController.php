@@ -10,19 +10,16 @@ use Inertia\Response;
 use App\Http\Requests\StorePolicyRequest;
 use App\Http\Resources\PolicyIndexResource;
 use App\Http\Resources\PolicyShowResource;
-use App\Models\InsuranceCategory;
 use App\Models\Policy;
 
 class PolicyController extends Controller
 {
     public function index()
     {
-        $categories = InsuranceCategory::all();
         $policies = Policy::all();
 
         return Inertia::render('Policy/Index', [
             'data' => [
-                'categories' => $categories,
                 'policies' => PolicyIndexResource::collection($policies),
             ],
             'meta' => [
