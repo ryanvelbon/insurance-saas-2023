@@ -19,13 +19,21 @@
 
 ## Getting Started
 
-### Demo
+### Installation
+
+    $ composer install
+
+    $ npm install
+
+    $ npm run dev
 
     $ php artisan migrate
 
     $ php artisan db:seed
 
-    $ php artisan db:seed --class=DemoSeeder
+Create sample data (optional)
+
+    $ php artisan db:demo
 
 
 ### Running the tests
