@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
+use App\Http\Resources\TeamShowResource;
 use App\Models\Team;
 use App\Models\User;
 use Gate;
@@ -19,14 +19,13 @@ class TeamMemberController extends Controller
     {
         abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $team = Team::findOrFail(auth()->user()->team_id);
-        $roles = Role::get(['id', 'title']);
+        $id = auth()->user()->team_id;
+
+        $team = Team::findOrFail($id)->load('members');
 
         return Inertia::render('TeamMember/Index', [
             'data' => [
-                'team'  => $team,
-                'users' => $team->members,
-                'roles' => $roles,
+                'team'  => new TeamShowResource($team),
             ],
             'meta' => [
 
