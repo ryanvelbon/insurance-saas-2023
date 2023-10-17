@@ -1,25 +1,22 @@
 # Project Title
-<!-- One paragraph of your project's description goes here. Describe what your project is, what problem it solves, how it solves the problem, and the architecture. -->
+
+[Siguranza]() is a CRM for insurance sales agents built on open-source technologies such as [Laravel](), [Vue.js](), [Tailwind]().
+
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Contributing](#contributing)
+* [Changelog](#changelog)
+* [Security](#security)
+* [Credits](#credits)
+* [License](#license)
 
 
-## Topics
+## Requirements
 
-1. [Introduction](#introduction)
-2. [link](#link)
-3. [Running the tests](#running-the-tests)
-4. [Deployment](#deployment)
-5. [link](#link)
+* PHP 8.0.2 or higher
+* MySQL Database
 
-
-
-
-### Introduction
-
-[Insurance Broker]() is a CRM for insurance sales agents built on open-source technologies such as [Laravel](), [Vue.js](), [Tailwind]().
-
-## Getting Started
-
-### Installation
+## Installation
 
     $ composer install
 
@@ -35,6 +32,32 @@ Create sample data (optional)
 
     $ php artisan db:demo
 
+## Contributing
+
+Kindly ensure your commit messages and pull requests are descriptive; pull requests with blank messages might be declined without further explanation.
+
+When adding code to Siguranza, adhere to the PSR coding guidelines. The guiding principle is: Imitate the existing Siguranza coding style.
+
+Be aware that this project comes with a [Contributor Code of Conduct](). Engaging in this project means you accept its conditions.
+
+## Changelog
+
+For recent changes, kindly refer to the [Releases](../../releases) section.
+
+## Security
+
+Please review [our security policy]() on how to report security vulnerabilities.
+
+## Credits
+
+* [Ryan Vel Bon](https://github.com/ryanvelbon)
+
+## License
+
+Siguranza is released under the [BSL license](LICENSE.txt).
+
+---
+<!-- The rest of this README is Docs -->
 
 ### Running the tests
 
