@@ -205,7 +205,7 @@ const sidebarOpen = ref(false)
                     </div>
                 </div>
 
-                <main class="flex-1">
+                <main class="flex-1 bg-gray-100">
                     <slot />
                 </main>
             </div>
