@@ -35,6 +35,9 @@ const form = useForm({
                 <h1 class="text-3xl font-semibold text-gray-900">{{ data.team.name }}</h1>
             </div>
             <div>
+                <Link :href="route('users.create')" class="bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-400 px-4 py-2">
+                    Create User
+                </Link>
                 <button @click="showModal = true" type="button" class="bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-400 px-4 py-2">
                     Invite
                     <i class="fa-solid fa-user-plus ml-2"></i>
@@ -80,7 +83,7 @@ const form = useForm({
                         </td>
                         <td>
                             <Link :href="route('users.edit', member.id)">
-                                Edit {{member.id}}
+                                Edit
                             </Link>
                         </td>
                     </tr>

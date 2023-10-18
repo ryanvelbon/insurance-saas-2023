@@ -49,7 +49,9 @@ require __DIR__.'/auth.php';
 
 // Users (team members)
 Route::get('/team', [UserController::class, 'index'])->name('users.index');
-Route::post('/users', [UserController::class, 'invite'])->name('users.invite');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::post('/team/invitations', [UserController::class, 'invite'])->name('users.invite');
 
 // Persons
 Route::resource('/persons', PersonController::class);
