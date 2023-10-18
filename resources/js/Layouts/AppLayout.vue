@@ -19,7 +19,7 @@ const sidebarTopNavigation = [
     { name: 'Policies', href: route('policies.index'), icon: 'file-contract', current: route().current('policies.index') },
 ]
 const sidebarBottomNavigation = [
-    { name: 'Team', href: route('team-members.index'), icon: 'people-group', current: route().current('team-members.index') },
+    { name: 'Team', href: route('users.index'), icon: 'people-group', current: route().current('users.index') },
     { name: 'Settings', href: '#', icon: 'gear', current: false },
 ]
 const userNavigation = [

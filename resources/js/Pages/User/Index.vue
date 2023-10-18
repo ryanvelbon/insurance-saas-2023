@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Head, useForm } from '@inertiajs/inertia-vue3'
+import { Head, Link, useForm } from '@inertiajs/inertia-vue3'
 import moment from 'moment'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import DropdownA from '@/Components/DropdownA.vue'
@@ -79,7 +79,9 @@ const form = useForm({
                             </div>
                         </td>
                         <td>
-                            <a href="">Edit</a>
+                            <Link :href="route('users.edit', member.id)">
+                                Edit {{member.id}}
+                            </Link>
                         </td>
                     </tr>
                 </tbody>

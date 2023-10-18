@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TeamShowResource;
+use App\Http\Resources\UserResource;
 use App\Models\Team;
 use App\Models\User;
 use Gate;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\Response;
 use Inertia\Inertia;
 
-class TeamMemberController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
@@ -23,7 +24,7 @@ class TeamMemberController extends Controller
 
         $team = Team::findOrFail($id)->load('members');
 
-        return Inertia::render('TeamMember/Index', [
+        return Inertia::render('User/Index', [
             'data' => [
                 'team'  => new TeamShowResource($team),
             ],
@@ -38,7 +39,7 @@ class TeamMemberController extends Controller
         $request->validate(['email' => 'email']);
         $team    = Team::where('owner_id', auth()->user()->id)->first();
         $url     = URL::signedRoute('register', ['team' => $team->id]);
-        $message = new \App\Notifications\TeamMemberInvite($url);
+        $message = new \App\Notifications\UserInvite($url);
         Notification::route('mail', $request->input('email'))->notify($message);
 
         return redirect()->back()->with('message', 'Invite sent.');
