@@ -2,7 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
-import TextInput from '@/Components/TextInput.vue'
+import TextInput from '@/Components/TextInput2.vue'
 import TextArea from '@/Components/TextArea.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import DropdownA from '@/Components/DropdownA.vue'
@@ -42,29 +42,11 @@ console.log(props.data)
     <AppLayout>
         <h1>Create a Juridical Person</h1>
 
-        <InputError class="mt-2" :message="form.errors.email" />
-        <InputError class="mt-2" :message="form.errors.phone" />
-
-        <InputError class="mt-2" :message="form.errors.name" />
-        <InputError class="mt-2" :message="form.errors.description" />
-
         <form @submit.prevent="submit" autocomplete="off">
             <div class="grid grid-cols-1 lg:grid-cols-2">
                 <section class="bg-red-200 p-8">
-                    <div>
-                        <InputLabel for="name" value="Name" />
 
-                        <TextInput
-                            id="name"
-                            type="text"
-                            v-model="form.name"
-                            class="mt-1 block w-full"
-                            required
-                            autofocus
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.name" />
-                    </div>
+                    <TextInput v-model="form.name" :error="form.errors.name" label="Name" type="text" required autofocus />
 
                     <div class="mt-8">
                         <InputLabel for="type" value="Type" />
@@ -92,66 +74,13 @@ console.log(props.data)
                         <InputError class="mt-2" :message="form.errors.status" />
                     </div>
 
-                    <div class="mt-8">
-                        <InputLabel for="founded" value="Founded" />
+                    <TextInput v-model="form.founded" :error="form.errors.founded" label="Year Founded" type="number" min="1900" :max="new Date().getFullYear()" />
 
-                        <TextInput
-                            id="founded"
-                            type="number"
-                            v-model="form.founded"
-                            class="mt-1 block"
-                            required
-                            min="1900"
-                            max="2025"
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.founded" />
-                    </div>
                 </section>
                 <section class="bg-blue-200 p-8">
-                    <div>
-                        <InputLabel for="email" value="Email" />
-
-                        <TextInput
-                            id="email"
-                            type="email"
-                            v-model="form.email"
-                            class="mt-1 block"
-                            required
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.email" />
-                    </div>
-
-                    <div class="mt-8">
-                        <InputLabel for="phone" value="Phone" />
-
-                        <TextInput
-                            id="phone"
-                            type="text"
-                            v-model="form.phone"
-                            class="mt-1 block"
-                            required
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.phone" />
-                    </div>
-
-                    <div class="mt-8">
-                        <InputLabel for="website" value="Website" />
-
-                        <TextInput
-                            id="website"
-                            type="text"
-                            v-model="form.website"
-                            class="mt-1 block"
-                            required
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.website" />
-                    </div>
-
-
+                    <TextInput v-model="form.email" :error="form.errors.email" label="Email" type="email" />
+                    <TextInput v-model="form.phone" :error="form.errors.phone" label="Phone" type="text" />
+                    <TextInput v-model="form.website" :error="form.errors.website" label="Website" type="text" />
                 </section>
             </div>
             <section class="bg-green-200 p-8">

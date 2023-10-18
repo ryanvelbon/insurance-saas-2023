@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import { Head, useForm } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
-import TextInput from '@/Components/TextInput.vue'
+import TextInput from '@/Components/TextInput2.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import DropdownA from '@/Components/DropdownA.vue'
 import { useStaticDataStore } from '@/stores/staticData'
-import { Head, useForm } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
     data: Object,
@@ -48,30 +48,9 @@ const submit = () => {
                 <section class="bg-yellow-200 p-8">
                     <div class="grid grid-cols-2 gap-y-6">
 
-                        <div>
-                            <InputLabel for="firstName" value="First Name" />
-                            <TextInput
-                                id="firstName"
-                                type="text"
-                                v-model="form.firstName"
-                                class="mt-1 block w-full"
-                                required
-                                autofocus
-                            />
-                            <InputError class="mt-2" :message="form.errors.firstName" />
-                        </div>
+                        <TextInput v-model="form.firstName" :error="form.errors.firstName" label="First Name"  type="text" required autofocus />
 
-                        <div>
-                            <InputLabel for="lastName" value="Last Name" />
-                            <TextInput
-                                id="lastName"
-                                type="text"
-                                v-model="form.lastName"
-                                class="mt-1 block w-full"
-                                required
-                            />
-                            <InputError class="mt-2" :message="form.errors.lastName" />
-                        </div>
+                        <TextInput v-model="form.lastName" :error="form.errors.lastName" label="Last Name"  type="text" required />
 
                         <div>
                             <fieldset>
@@ -99,29 +78,9 @@ const submit = () => {
                             <InputError class="mt-2" :message="form.errors.nationality" />
                         </div>
 
-                        <div class="col-span-2">
-                            <InputLabel for="passportNo" value="Passport Number" />
-                            <TextInput
-                                id="passportNo"
-                                type="text"
-                                v-model="form.passportNo"
-                                class="mt-1 block"
-                                required
-                            />
-                            <InputError class="mt-2" :message="form.errors.passportNo" />
-                        </div>
+                        <TextInput v-model="form.passportNo" :error="form.errors.passportNo" label="Passport Number"  type="text" required />
 
-                        <div>
-                            <InputLabel for="dob" value="Date of Birth" />
-                            <TextInput
-                                id="dob"
-                                type="date"
-                                v-model="form.dob"
-                                class="mt-1 block"
-                                required
-                            />
-                            <InputError class="mt-2" :message="form.errors.dob" />
-                        </div>
+                        <TextInput v-model="form.dob" :error="form.errors.dob" label="Date of Birth"  type="date" required />
 
                         <div>
                             <InputLabel for="maritalStatus" value="Marital Status" />
@@ -139,29 +98,9 @@ const submit = () => {
                 </section>
                 <section class="bg-blue-200 p-8">
 
-                    <div>
-                        <InputLabel for="email" value="Email" />
-                        <TextInput
-                            id="email"
-                            type="email"
-                            v-model="form.email"
-                            class="mt-1 block"
-                            required
-                        />
-                        <InputError class="mt-2" :message="form.errors.email" />
-                    </div>
+                    <TextInput v-model="form.email" :error="form.errors.email" label="Email"  type="email" required />
 
-                    <div class="mt-8">
-                        <InputLabel for="phone" value="Phone" />
-                        <TextInput
-                            id="phone"
-                            type="text"
-                            v-model="form.phone"
-                            class="mt-1 block"
-                            required
-                        />
-                        <InputError class="mt-2" :message="form.errors.phone" />
-                    </div>
+                    <TextInput v-model="form.phone" :error="form.errors.phone" label="Phone"  type="text" required />
 
                     <div class="mt-8">
                         <InputLabel for="domicile" value="Domicile Country" />
@@ -183,65 +122,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-
-        <div class="overflow-hidden bg-white py-16 px-6 lg:px-8 lg:py-24">
-            <div class="relative mx-auto max-w-xl">
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact sales</h2>
-                    <p class="mt-4 text-lg leading-6 text-gray-500">Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
-                </div>
-                <div class="mt-12">
-                    <form class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-                        <div>
-                            <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                            <div class="mt-1">
-                                <input
-                                    type="text" name="first_name" id="first_name"
-                                    class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                    v-model="form.first_name"
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                            <div class="mt-1">
-                                <input
-                                    type="text" name="last-name" id="last-name" 
-                                    class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-                            </div>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
-                            <div class="mt-1">
-                                <input type="text" name="company" id="company" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-                            </div>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <div class="mt-1">
-                                <input id="email" name="email" type="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-                            </div>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                            <div class="relative mt-1 rounded-md shadow-sm">
-                                <div class="absolute inset-y-0 left-0 flex items-center">
-                                    <label for="country" class="sr-only">Country</label>
-                                    <select id="country" name="country" class="h-full rounded-md border-transparent bg-transparent py-0 pl-4 pr-8 text-gray-500 focus:border-indigo-500 focus:ring-indigo-500">
-                                        <option>US</option>
-                                        <option>CA</option>
-                                        <option>EU</option>
-                                    </select>
-                                </div>
-                                <input type="text" name="phone-number" id="phone-number" class="block w-full rounded-md border-gray-300 py-3 px-4 pl-20 focus:border-indigo-500 focus:ring-indigo-500" placeholder="+1 (555) 987-6543" />
-                            </div>
-                        </div>
-                        <div class="sm:col-span-2">
-                            <button type="submit" class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
     </AppLayout>
 </template>
