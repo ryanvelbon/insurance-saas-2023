@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RoleTitle;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Role;
@@ -21,7 +22,7 @@ class UserSeeder extends Seeder
             'remember_token' => null,
         ]);
 
-        $admin->roles()->sync(1);
+        $admin->roles()->sync(Role::where('title', RoleTitle::ADMIN)->first()->id);
 
         // +++ create end-users +++
 
@@ -35,7 +36,7 @@ class UserSeeder extends Seeder
 
             // assign Sales Agent role
             foreach ($users as $user) {
-                $user->roles()->sync(Role::where('title', 'Sales Agent')->first()->id);
+                $user->roles()->sync(Role::where('title', RoleTitle::SALES_AGENT)->first()->id);
             }
 
             $team->owner_id = $users[0]->id;

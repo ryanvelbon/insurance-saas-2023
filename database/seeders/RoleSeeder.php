@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\RoleTitle;
 use App\Models\Role;
 use App\Models\Permission;
 use Illuminate\Database\Seeder;
@@ -12,7 +13,7 @@ class RoleSeeder extends Seeder
     {
         Role::create([
             'id' => 1,
-            'title' => 'Admin',
+            'title' => RoleTitle::ADMIN,
             'description' => 'Oversees all platform functionalities, configurations, and user management to ensure smooth operations of the SaaS.',
         ])->permissions()->sync(
             Permission::all()
@@ -20,70 +21,43 @@ class RoleSeeder extends Seeder
 
 
         Role::create([
-            'id' => 2,
-            'title' => 'User',
-            'description' => 'A general user with access to basic features of this software.',
-        ])->permissions()->sync(
-            Permission::all()->reject(function ($permission) {return preg_match('/^(user|role|permission|team)_/', $permission->title); })
-        );
-
-
-        Role::create([
             'id' => 3,
-            'title' => 'Team Leader',
+            'title' => RoleTitle::TEAM_LEADER,
             'description' => 'Supervises and coordinates the activities of a specific team, ensuring efficient workflow and goal attainment.',
-        ])->attachPermissions([
-            'profile_password_edit',
-            'person_create',
-            'person_edit',
-            'person_show',
-            'person_delete',
-            'person_access',
-            'team_create',
-            'team_edit',
-            'team_show',
-            'team_delete',
-            'team_access',
         ]);
 
 
         $role = Role::create([
             'id' => 4,
-            'title' => 'Sales Agent',
+            'title' => RoleTitle::SALES_AGENT,
             'description' => 'Engages with potential clients to sell insurance policies and manages existing client relations for policy renewals.',
-        ]);
-        $permissions = Permission::all()->filter(function ($permission) {return preg_match('/^(person|policy)_/', $permission->title); });
-        $role->permissions()->sync($permissions);
-        $role->attachPermissions([
-            'team_access',
-            'team_show'
         ]);
 
 
         Role::create([
             'id' => 5,
-            'title' => 'Account Manager',
+            'title' => RoleTitle::ACCOUNT_MANAGER,
             'description' => 'Manages client portfolios, ensuring their insurance needs are met and addressing any concerns or changes required in their policies.',
         ]);
 
 
         Role::create([
             'id' => 6,
-            'title' => 'Underwriter',
+            'title' => RoleTitle::UNDERWRITER,
             'description' => 'Assesses the risks associated with potential clients or claims and decides on the terms and conditions of insurance policies.',
         ]);
 
 
         Role::create([
             'id' => 7,
-            'title' => 'Claims Adjuster',
+            'title' => RoleTitle::CLAIMS_ADJUSTER,
             'description' => 'Evaluates and processes insurance claims, determining the payout amounts and ensuring claims are settled fairly and efficiently.',
         ]);
 
 
         Role::create([
             'id' => 8,
-            'title' => 'Risk Manager',
+            'title' => RoleTitle::RISK_MANAGER,
             'description' => 'Analyzes potential risks and advises on best insurance policies or preventive measures to mitigate potential threats.',
         ]);
     }
