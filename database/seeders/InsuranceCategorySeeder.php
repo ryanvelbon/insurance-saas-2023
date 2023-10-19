@@ -6,7 +6,7 @@ use App\Models\InsuranceCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class InsuranceCategoriesTableSeeder extends Seeder
+class InsuranceCategorySeeder extends Seeder
 {
     public function run()
     {

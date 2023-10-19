@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CountriesTableSeeder::class,
-            InsuranceCategoriesTableSeeder::class,
-            PermissionsTableSeeder::class,
-            RolesTableSeeder::class,
+            CountrySeeder::class,
+            InsuranceCategorySeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

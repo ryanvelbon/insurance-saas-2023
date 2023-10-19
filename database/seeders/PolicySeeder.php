@@ -13,7 +13,7 @@ use App\Models\Person;
 use App\Models\Policy;
 use App\Helpers\MyMath;
 
-class PoliciesTableSeeder extends Seeder
+class PolicySeeder extends Seeder
 {
     public function run()
     {

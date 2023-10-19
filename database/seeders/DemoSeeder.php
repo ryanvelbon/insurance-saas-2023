@@ -10,9 +10,9 @@ class DemoSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UsersTableSeeder::class,
-            InsurersTableSeeder::class,
-            PoliciesTableSeeder::class,
+            UserSeeder::class,
+            InsurerSeeder::class,
+            PolicySeeder::class,
         ]);
     }
 }
