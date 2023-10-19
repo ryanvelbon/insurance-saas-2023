@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\TeamShowResource;
 use App\Http\Resources\UserResource;
 use App\Models\Team;
@@ -55,6 +56,42 @@ class UserController extends Controller
         }
 
         return Redirect::route('users.index')->with('success', 'User created.');
+    }
+
+    public function edit(User $user)
+    {
+        return Inertia::render('User/Edit', [
+            'user' => new UserResource($user),
+        ]);
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $user->fill($request->only(['name', 'email']));
+
+        $user->roles()->sync($request->roles);
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return Redirect::back()->with('success', 'User updated.');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return Redirect::route('users.index')->with('success', 'User deleted.');
+    }
+
+    public function restore(User $user)
+    {
+        $user->restore();
+
+        return Redirect::back()->with('success', 'User restored.');
     }
 
     public function invite(Request $request)

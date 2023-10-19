@@ -2,36 +2,32 @@
 
 namespace App\Http\Requests;
 
-use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; // *TEMP*
-
-        return Gate::allows('user_create');
+        return true;
     }
 
     public function rules()
     {
-        // *PENDING* use same validation as RegisteredUserController.php
-
         return [
             'name' => [
+                'required',
                 'string',
                 'min:3',
                 'max:40',
-                'required',
             ],
             'email' => [
                 'required',
-                'unique:users',
+                Rule::unique('users')->ignore($this->user),
             ],
             'password' => [
+                'nullable',
                 'min:8',
-                'required',
             ],
             'roles.*' => [
                 'integer',

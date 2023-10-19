@@ -14,6 +14,8 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'last_login_at' => $this->last_login_at,
             'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'deleted_at' => $this->deleted_at,
             'team_id' => $this->team_id,
             'roles' => $this->roles->map(function ($role) {
                 return [
