@@ -11,7 +11,7 @@ class StoreJuridicalPersonRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('person_create');
+        return Gate::allows('person.create');
     }
 
     public function rules()

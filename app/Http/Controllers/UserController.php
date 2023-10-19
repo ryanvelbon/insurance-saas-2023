@@ -22,7 +22,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('team.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $id = auth()->user()->team_id;
 

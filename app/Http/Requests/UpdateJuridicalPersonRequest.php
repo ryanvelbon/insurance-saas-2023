@@ -11,7 +11,7 @@ class UpdateJuridicalPersonRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('person_edit');
+        return Gate::allows('person.edit');
     }
 
     public function rules()

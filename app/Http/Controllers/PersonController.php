@@ -16,7 +16,7 @@ class PersonController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('person_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('person.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $persons = Person::all();
 
@@ -34,7 +34,7 @@ class PersonController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('person_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('person.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return Inertia::render('Person/Create', [
             'data' => [
@@ -45,14 +45,14 @@ class PersonController extends Controller
 
     public function edit(Person $person)
     {
-        abort_if(Gate::denies('person_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('person.edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('persons.edit', compact('person'));
     }
 
     public function show(Person $person)
     {
-        abort_if(Gate::denies('person_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('person.view'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return Inertia::render('Person/Show', [
             'data' => [
@@ -64,7 +64,7 @@ class PersonController extends Controller
 
     public function destroy(Person $person)
     {
-        abort_if(Gate::denies('person_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('person.delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $person->delete();
 

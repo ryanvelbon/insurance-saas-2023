@@ -11,7 +11,7 @@ class StoreUserRequest extends FormRequest
     {
         return true; // *TEMP*
 
-        return Gate::allows('user_create');
+        return Gate::allows('user.create');
     }
 
     public function rules()
