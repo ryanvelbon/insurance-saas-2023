@@ -9,8 +9,6 @@ class StoreUserRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; // *TEMP*
-
         return Gate::allows('user.create');
     }
 

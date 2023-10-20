@@ -11,9 +11,7 @@ class MassDestroyPersonRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('person.delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return true;
+        return Gate::allows('person.delete');
     }
 
     public function rules()

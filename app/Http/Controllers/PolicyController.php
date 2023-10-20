@@ -16,6 +16,8 @@ class PolicyController extends Controller
 {
     public function index()
     {
+        abort_if(Gate::denies('policy.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $policies = Policy::all();
 
         return Inertia::render('Policy/Index', [
@@ -30,6 +32,8 @@ class PolicyController extends Controller
 
     public function show($id): Response
     {
+        abort_if(Gate::denies('policy.view'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $policy = Policy::findOrFail($id)->load(['insurer', 'policyholder', 'agent']);
 
         return Inertia::render('Policy/Show', [
@@ -39,6 +43,8 @@ class PolicyController extends Controller
 
     public function create(Request $request)
     {
+        abort_if(Gate::denies('policy.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $categoryId = $request->query('categoryId');
 
         return Inertia::render('Policy/Create', [

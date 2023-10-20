@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -9,7 +10,7 @@ class UpdateUserRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        return Gate::allows('user.create');
     }
 
     public function rules()

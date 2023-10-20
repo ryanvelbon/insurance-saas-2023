@@ -16,6 +16,8 @@ class NaturalPersonController extends Controller
 {
     public function create()
     {
+        abort_if(Gate::denies('person.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return Inertia::render('Person/NaturalPerson/Create', [
             'data' => [
                 'genderChoices' => NaturalPerson::GENDER_SELECT,

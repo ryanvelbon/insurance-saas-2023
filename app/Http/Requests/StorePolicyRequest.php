@@ -2,13 +2,14 @@
 
 namespace App\Http\Requests;
 
+use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePolicyRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; // *TEMP*
+        return Gate::allows('policy.create');
     }
 
     public function rules()

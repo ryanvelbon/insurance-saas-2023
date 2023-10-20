@@ -10,6 +10,7 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         $actions = [
+            'access',
             'viewAny',
             'view',
             'create',

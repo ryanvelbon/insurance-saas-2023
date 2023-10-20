@@ -22,7 +22,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('team.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('user.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $id = auth()->user()->team_id;
 
@@ -40,6 +40,8 @@ class UserController extends Controller
 
     public function create()
     {
+        abort_if(Gate::denies('user.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return Inertia::render('User/Create');
     }
 
@@ -60,6 +62,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        abort_if(Gate::denies('user.edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return Inertia::render('User/Edit', [
             'user' => new UserResource($user),
         ]);
@@ -82,6 +86,8 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        abort_if(Gate::denies('user.delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $user->delete();
 
         return Redirect::route('users.index')->with('success', 'User deleted.');
@@ -89,6 +95,8 @@ class UserController extends Controller
 
     public function restore(User $user)
     {
+        abort_if(Gate::denies('user.restore'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $user->restore();
 
         return Redirect::back()->with('success', 'User restored.');
@@ -96,6 +104,8 @@ class UserController extends Controller
 
     public function invite(Request $request)
     {
+        abort_if(Gate::denies('user.invite'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $request->validate(['email' => 'email']);
         $team    = Team::where('owner_id', auth()->user()->id)->first();
         $url     = URL::signedRoute('register', ['team' => $team->id]);
