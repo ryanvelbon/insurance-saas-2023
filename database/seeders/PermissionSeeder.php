@@ -37,9 +37,13 @@ class PermissionSeeder extends Seeder
 
         // define additional permissions below
 
-        Permission::insert([
-            ['title' => 'profile.editPassword'],
-            ['title' => 'user.invite'],
-        ]);
+        $otherPermissions = [
+            'profile.editPassword',
+            'user.invite',
+        ];
+
+        foreach ($otherPermissions as $permission) {
+            Permission::create(['title' => $permission]);
+        }
     }
 }
