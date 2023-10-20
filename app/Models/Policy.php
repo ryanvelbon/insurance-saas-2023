@@ -6,6 +6,7 @@ use \DateTimeInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\MultiTenantModelTrait;
 
@@ -96,12 +97,12 @@ class Policy extends Model
         'deleted_at',
     ];
 
-    public function insurer()
+    public function insurer(): BelongsTo
     {
         return $this->belongsTo(Insurer::class, 'insurer_id');
     }
 
-    public function policyholder()
+    public function policyholder(): BelongsTo
     {
         return $this->belongsTo(Person::class, 'policyholder_id');
     }
@@ -126,17 +127,17 @@ class Policy extends Model
         $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function agent()
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class, 'agent_id');
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(InsuranceCategory::class, 'category_id');
     }
 
-    public function team()
+    public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'team_id');
     }

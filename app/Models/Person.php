@@ -6,6 +6,7 @@ use \DateTimeInterface;
 use App\Traits\MultiTenantModelTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Person extends Model
@@ -43,12 +44,12 @@ class Person extends Model
         'deleted_at',
     ];
 
-    public function team()
+    public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'team_id');
     }
 
-    public function domicile()
+    public function domicile(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'domicile_country_id');
     }
