@@ -9,10 +9,8 @@ class AddRelationshipFieldsToPersonsTable extends Migration
     public function up()
     {
         Schema::table('persons', function (Blueprint $table) {
-            $table->unsignedBigInteger('team_id')->nullable();
-            $table->foreign('team_id')->references('id')->on('teams');
-            $table->unsignedBigInteger('domicile_country_id')->nullable();
-            $table->foreign('domicile_country_id')->references('id')->on('countries');
+            $table->foreignId('team_id')->nullable()->references('id')->on('teams');
+            $table->foreignId('domicile_country_id')->nullable()->references('id')->on('countries');
         });
     }
 

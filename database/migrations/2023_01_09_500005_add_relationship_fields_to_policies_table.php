@@ -9,16 +9,11 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
     public function up()
     {
         Schema::table('policies', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('insurance_categories');
-            $table->unsignedBigInteger('insurer_id');
-            $table->foreign('insurer_id')->references('id')->on('insurers');
-            $table->unsignedBigInteger('policyholder_id');
-            $table->foreign('policyholder_id')->references('id')->on('persons');
-            $table->unsignedBigInteger('agent_id');
-            $table->foreign('agent_id')->references('id')->on('users');
-            $table->unsignedBigInteger('team_id');
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreignId('category_id')->references('id')->on('insurance_categories');
+            $table->foreignId('insurer_id')->references('id')->on('insurers');
+            $table->foreignId('policyholder_id')->references('id')->on('persons');
+            $table->foreignId('agent_id')->references('id')->on('users');
+            $table->foreignId('team_id')->references('id')->on('teams');
         });
     }
 
