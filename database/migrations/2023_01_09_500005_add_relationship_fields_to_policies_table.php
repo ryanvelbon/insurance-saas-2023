@@ -14,6 +14,7 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
             $table->foreignId('policyholder_id')->references('id')->on('persons');
             $table->foreignId('agent_id')->references('id')->on('users');
             $table->foreignId('team_id')->references('id')->on('teams');
+            $table->foreignId('created_by')->nullable()->references('id')->on('users');
         });
     }
 
@@ -25,6 +26,7 @@ class AddRelationshipFieldsToPoliciesTable extends Migration
             $table->dropForeign('policies_policyholder_id_foreign');
             $table->dropForeign('policies_agent_id_foreign');
             $table->dropForeign('policies_team_id_foreign');
+            $table->dropForeign('policies_created_by_foreign');
         });
     }
 }

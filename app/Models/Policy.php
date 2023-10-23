@@ -92,6 +92,7 @@ class Policy extends Model
         'limit_amount',
         'agent_id',
         'team_id',
+        'created_by',
         'created_at',
         'updated_at',
         'deleted_at',
