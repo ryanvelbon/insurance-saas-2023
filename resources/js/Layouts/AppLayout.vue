@@ -66,8 +66,8 @@ const sidebarOpen = ref(false)
                                 </div>
                             </TransitionChild>
                             <div class="flex flex-shrink-0 items-center px-4">
-                                <img class="h-6 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
-                                <span class="text-indigo-600 text-xl font-bold ml-3">Siguranza</span>
+                                <img class="h-6 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=black&shade=600" alt="Your Company" />
+                                <span class="text-primary-600 text-xl font-bold ml-3">Siguranza</span>
                             </div>
                             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                                 <nav class="space-y-1 px-2">
@@ -91,8 +91,8 @@ const sidebarOpen = ref(false)
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
                 <div class="flex flex-shrink-0 items-center px-4">
-                    <img class="h-6 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
-                    <span class="text-indigo-600 text-xl font-bold ml-3">Siguranza</span>
+                    <img class="h-6 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=black&shade=600" alt="Your Company" />
+                    <span class="text-primary-600 text-xl font-bold ml-3">Siguranza</span>
                 </div>
                 <div class="mt-5 flex flex-grow flex-col">
                     <nav class="flex-1">
@@ -114,7 +114,7 @@ const sidebarOpen = ref(false)
         <div class="md:pl-48">
             <div class="flex flex-col xl:px-0">
                 <div class="sticky top-0 z-10 flex h-12 flex-shrink-0 border-b border-gray-200 bg-white pr-6 md:pl-6">
-                    <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" @click="sidebarOpen = true">
+                    <button type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 md:hidden" @click="sidebarOpen = true">
                         <span class="sr-only">Open sidebar</span>
                         <i class="fa-sharp fa-solid fa-bars" aria-hidden="true"></i>
                     </button>
@@ -126,7 +126,7 @@ const sidebarOpen = ref(false)
                             <!-- Menu Button -->
                             <Menu as="div" class="relative">
                                 <div>
-                                    <MenuButton class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200 focus:bg-indigo-200">
+                                    <MenuButton class="text-gray-600 px-3 py-1.5 rounded text-sm font-bold hover:bg-gray-200 focus:bg-primary-200">
                                         Lorem
                                         <i class="fa-light fa-chevron-down ml-1"></i>
                                     </MenuButton>
@@ -143,7 +143,7 @@ const sidebarOpen = ref(false)
                             <!-- Create Resource -->
                             <Menu as="div" class="relative">
                                 <div>
-                                    <MenuButton class="bg-blue-500 text-white px-3 py-1.5 rounded text-sm font-bold hover:bg-blue-600">
+                                    <MenuButton class="bg-primary-500 text-white px-3 py-1.5 rounded text-sm font-bold hover:bg-primary-600">
                                         Create
                                     </MenuButton>
                                 </div>
@@ -167,7 +167,7 @@ const sidebarOpen = ref(false)
                                         <div class="pointer-events-none absolute inset-y-0 left-2 flex items-center">
                                             <i class="fa-solid fa-magnifying-glass fa-xs" aria-hidden="true"></i>
                                         </div>
-                                        <input id="search-field" class="block h-8 w-40 focus:w-full rounded border border-gray-300 py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-indigo-500 focus:shadow-md focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search" />
+                                        <input id="search-field" class="block h-8 w-40 focus:w-full rounded border border-gray-300 py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 focus:border-primary-500 focus:shadow-md focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-sm" placeholder="Search" type="search" name="search" />
                                     </div>
                                 </form>
                             </div>
@@ -180,7 +180,7 @@ const sidebarOpen = ref(false)
                                 <!-- Profile dropdown -->
                                 <Menu as="div" class="relative ml-3">
                                     <div>
-                                        <MenuButton class="flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                        <MenuButton class="flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                                             <span class="sr-only">Open user menu</span>
                                             <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                         </MenuButton>
@@ -215,7 +215,7 @@ const sidebarOpen = ref(false)
         <div v-if="$page.props.flash.message" class="h-16 max-w-64 p-2 text-sm shadow-xl border border-gray-300 bg-gray-100 text-gray-600">
             {{ $page.props.flash.message }}
         </div>
-        <div v-if="$page.props.flash.success" class="h-16 max-w-64 p-2 text-sm shadow-xl border border-green-300 bg-green-100 text-green-600">
+        <div v-if="$page.props.flash.success" class="h-16 max-w-64 p-2 text-sm shadow-xl border border-success-300 bg-success-100 text-success-600">
             {{ $page.props.flash.success }}
         </div>
     </div>

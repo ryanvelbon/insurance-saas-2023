@@ -55,12 +55,12 @@ const restore = () => {
                             <input type="checkbox" :value="role.value" v-model="form.roles">
                             <label class="ml-2">{{ role.label }}</label>
                         </div>
-                        <p class="text-red-600">{{ form.errors.roles }}</p>
+                        <p class="text-danger-600">{{ form.errors.roles }}</p>
                     </div>
                 </div>
                 <div class="flex justify-between">                    
-                    <button v-if="user.deleted_at" type="button" @click="restore" class="bg-yellow-500 p-4">Restore</button>
-                    <button v-if="!user.deleted_at" type="button" @click="destroy" class="bg-red-500 p-4">Delete</button>
+                    <button v-if="user.deleted_at" type="button" @click="restore" class="bg-warning-500 p-4">Restore</button>
+                    <button v-if="!user.deleted_at" type="button" @click="destroy" class="bg-danger-500 p-4">Delete</button>
                     <button type="submit" class="bg-gray-100 p-4">Update User</button>
                 </div>
             </form>

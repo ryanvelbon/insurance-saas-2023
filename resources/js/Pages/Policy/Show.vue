@@ -141,7 +141,7 @@ const breadcrumbPages = [
     @apply bg-white p-8 rounded-lg shadow-lg;
 }
 .heading-label {
-    @apply text-xl font-bold text-blue-600 mb-6;
+    @apply text-xl font-bold text-primary-600 mb-6;
 }
 .field-name {
     @apply text-xs uppercase text-gray-500 mb-1 font-semibold;

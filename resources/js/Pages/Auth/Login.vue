@@ -88,7 +88,7 @@ const submit = () => {
                         </div>
 
                         <div class="mt-8">
-                            <button class="bg-blue-500 hover:bg-blue-400 text-white w-full text-center py-3 font-bold rounded-lg" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                            <button class="bg-primary-500 hover:bg-primary-400 text-white w-full text-center py-3 font-bold rounded-lg" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                                 Log in
                             </button>
                         </div>
@@ -97,7 +97,7 @@ const submit = () => {
                             <Link
                                 v-if="canResetPassword"
                                 :href="route('password.request')"
-                                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                             >
                                 Forgot your password?
                             </Link>
@@ -105,12 +105,12 @@ const submit = () => {
                     </form>
                 </div>
             </section>
-            <section class="bg-blue-700 text-white flex flex-col gap-8 justify-center px-24 py-12">
+            <section class="bg-primary-700 text-white flex flex-col gap-8 justify-center px-24 py-12">
                 <h2 class="text-4xl font-bold">Lorem Ipsum Dolor Sit Amet Consectetur!</h2>
                 <p class="font-bold">Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
                 <div>
                     <a href="">
-                        <span class="bg-white border-blue-400 text-blue-600 hover:bg-blue-400 hover:border-white hover:text-white px-4 py-3 font-bold">
+                        <span class="bg-white border-primary-400 text-primary-600 hover:bg-primary-400 hover:border-white hover:text-white px-4 py-3 font-bold">
                             Cillum dolore eu Fugiat Nulla!
                         </span>
                     </a>

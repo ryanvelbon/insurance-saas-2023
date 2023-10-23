@@ -30,7 +30,7 @@ let showModal = ref(false)
                         <h1 class="text-5xl font-bold text-gray-900">Policies</h1>
                     </div>
                     <div>
-                        <button @click="showModal = true" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Create a New Policy</button>
+                        <button @click="showModal = true" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:w-auto">Create a New Policy</button>
                     </div>
                 </div>
                 <div class="grid grid-cols-4 gap-8">
@@ -101,7 +101,7 @@ let showModal = ref(false)
                                         </td>
 
                                         <td class="">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                                            <a href="#" class="text-primary-600 hover:text-primary-900"
                                                 >Edit<span class="sr-only">, {{ policy.id }}</span></a
                                             >
                                         </td>

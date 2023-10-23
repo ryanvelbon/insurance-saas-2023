@@ -57,7 +57,7 @@ const submit = () => {
                                 <legend class="block text-sm font-medium text-gray-700">Gender</legend>
                                 <div class="mt-4 grid grid-cols-1 gap-y-4">
                                     <div v-for="gender in data.genderChoices" class="flex items-center">
-                                        <input :id="`gender-${gender.value}`" :name="gender" :value="gender.value" type="radio" v-model="form.gender" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                                        <input :id="`gender-${gender.value}`" :name="gender" :value="gender.value" type="radio" v-model="form.gender" class="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-500" />
                                         <label :for="`gender-${gender.value}`" class="ml-3">
                                             <span class="block text-sm text-gray-700">{{ gender.label }}</span>
                                         </label>

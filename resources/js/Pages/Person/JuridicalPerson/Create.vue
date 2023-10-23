@@ -101,7 +101,7 @@ console.log(props.data)
                     <legend class="block text-sm font-medium text-gray-700">Number of employees</legend>
                     <div class="mt-4 grid grid-cols-1 gap-y-4">
                         <div v-for="size in data.sizeChoices" class="flex items-center">
-                            <input :id="`size-${size.value}`" :name="size" :value="size.value" type="radio" v-model="form.size" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                            <input :id="`size-${size.value}`" :name="size" :value="size.value" type="radio" v-model="form.size" class="h-4 w-4 border-gray-300 text-primary-600 focus:ring-primary-500" />
                             <label :for="`size-${size.value}`" class="ml-3">
                                 <span class="block text-sm text-gray-700">{{ size.label }}</span>
                             </label>

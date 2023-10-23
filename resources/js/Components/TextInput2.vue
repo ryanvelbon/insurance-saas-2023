@@ -25,11 +25,11 @@ defineExpose({ focus: () => input.value.focus() })
         <input
             :id="id"
             v-bind="$attrs"
-            class="mt-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+            class="mt-1 border-gray-300 focus:border-primary-500 focus:ring-primary-500 rounded-md shadow-sm"
             :value="modelValue"
             @input="$emit('update:modelValue', $event.target.value)"
             ref="input"
         />
-        <p v-if="error" class="mt-2 text-sm text-red-600">{{ error }}</p>
+        <p v-if="error" class="mt-2 text-sm text-danger-600">{{ error }}</p>
     </div>
 </template>

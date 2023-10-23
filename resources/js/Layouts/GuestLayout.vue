@@ -13,11 +13,11 @@ import { Link } from '@inertiajs/inertia-vue3';
             </div>
             <div v-if="route().current('login') || route().current('password.request')" class="flex gap-4 items-center">
                 <p class="text-gray-700 text-sm">Don't have an account?</p>
-                <Link :href="route('register')" class="font-mono underline text-blue-500 hover:text-blue-400">Sign up</Link>
+                <Link :href="route('register')" class="font-mono underline text-primary-500 hover:text-primary-400">Sign up</Link>
             </div>
             <div v-if="route().current('register')" class="flex gap-4 items-center">
                 <p class="text-gray-700 text-sm">Already have an account?</p>
-                <Link :href="route('login')" class="font-mono underline text-blue-500 hover:text-blue-400">Sign in</Link>
+                <Link :href="route('login')" class="font-mono underline text-primary-500 hover:text-primary-400">Sign in</Link>
             </div>
         </div>
     </header>

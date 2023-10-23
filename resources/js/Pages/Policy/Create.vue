@@ -105,12 +105,12 @@ const breadcrumbPages = [
                 <div class="flex items-center justify-end mt-4">
                     <Link
                         :href="route('policies.index')"
-                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     >
                         Cancel
                     </Link>
 
-                    <button class="bg-blue-500 hover:bg-blue-400 text-white w-full text-center py-3 font-bold rounded-lg" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <button class="bg-primary-500 hover:bg-primary-400 text-white w-full text-center py-3 font-bold rounded-lg" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Save
                     </button>
                 </div>
