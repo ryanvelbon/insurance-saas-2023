@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Enums\RoleTitle;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -18,7 +17,7 @@ class UserSeeder extends Seeder
 
     public function createAdmin()
     {
-        $admin = User::create([
+        $admin = User::factory()->create([
             'id'             => 1,
             'name'           => 'Admin',
             'email'          => 'admin@x.com',
@@ -35,16 +34,32 @@ class UserSeeder extends Seeder
 
             $team = Team::create(['name' => $teamName]);
 
-            $users = User::factory()
-                        ->count(5)
-                        ->create(['team_id' => $team->id]);
-
-            foreach ($users as $user) {
-                $user->assignRole(RoleTitle::SALES_AGENT);
-            }
-
-            $team->owner_id = $users[0]->id;
+            // Create owner
+            $owner = User::factory()->create(['team_id' => $team->id]);
+            $owner->assignRole(RoleTitle::TEAM_LEADER);
+            $team->owner_id = $owner->id;
             $team->save();
+
+            // Create other users
+            User::factory()
+                ->count(5)
+                ->create(['team_id' => $team->id])
+                ->each(fn($user) => $user->assignRole(RoleTitle::SALES_AGENT));
+
+            User::factory()
+                ->count(2)
+                ->create(['team_id' => $team->id])
+                ->each(fn($user) => $user->assignRole(RoleTitle::UNDERWRITER));
+
+            User::factory()
+                ->count(1)
+                ->create(['team_id' => $team->id])
+                ->each(fn($user) => $user->assignRole(RoleTitle::CLAIMS_ADJUSTER));
+
+            User::factory()
+                ->count(1)
+                ->create(['team_id' => $team->id])
+                ->each(fn($user) => $user->assignRole(RoleTitle::RISK_MANAGER));
         }
     }
 }
