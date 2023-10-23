@@ -49,6 +49,11 @@ class User extends Authenticatable
         return $this->roles()->syncWithoutDetaching(Role::where('title', $role->value)->first()->id);
     }
 
+    public function removeRole(RoleTitle $role)
+    {
+        return $this->roles()->detach(Role::where('title', $role->value)->first()->id);
+    }
+
     public function hasRole(RoleTitle $role): bool
     {
         return $this->roles()->where('title', $role->value)->exists();

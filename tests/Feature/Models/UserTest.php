@@ -77,4 +77,35 @@ class UserTest extends TestCase
 
         $this->assertCount(1, $user->roles);
     }
+
+    public function test_it_can_have_a_role_removed()
+    {
+        $this->seed();
+        $user = User::factory()->create();
+
+        $user->assignRole(RoleTitle::SALES_AGENT);
+        $user->assignRole(RoleTitle::UNDERWRITER);
+        $user->assignRole(RoleTitle::CLAIMS_ADJUSTER);
+        $this->assertCount(3, $user->roles);
+        $user->removeRole(RoleTitle::CLAIMS_ADJUSTER);
+        $user->refresh();
+        $this->assertCount(2, $user->roles);
+        $user->removeRole(RoleTitle::SALES_AGENT);
+        $user->refresh();
+        $this->assertCount(1, $user->roles);
+        $user->removeRole(RoleTitle::UNDERWRITER);
+        $user->refresh();
+        $this->assertCount(0, $user->roles);
+    }
+
+    public function test_removing_a_role_that_does_not_exist_does_not_throw_an_error()
+    {
+        $this->seed();
+        $user = User::factory()->create();
+
+        $user->assignRole(RoleTitle::SALES_AGENT);
+        $this->assertCount(1, $user->roles);
+        $user->removeRole(RoleTitle::UNDERWRITER);
+        $this->assertCount(1, $user->roles);
+    }
 }
