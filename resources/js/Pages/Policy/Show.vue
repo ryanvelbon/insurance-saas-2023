@@ -97,8 +97,10 @@ const breadcrumbPages = [
                             {{ policy.insurer.website }}
                         </li>
                         <li>
-                            <i class="fa-light fa-envelope fa-sm"></i>
-                            {{ policy.insurer.email }}
+                            <a :href="'mailto:' + policy.insurer.email">
+                                <i class="fa-light fa-envelope fa-sm"></i>
+                                {{ policy.insurer.email }}
+                            </a>
                         </li>
                         <li>
                             <i class="fa-light fa-phone fa-sm"></i>
@@ -111,8 +113,10 @@ const breadcrumbPages = [
                     <h4 class="stakeholder-name">{{ policy.agent.name }}</h4>
                     <ul class="contact-details">
                         <li>
-                            <i class="fa-light fa-envelope fa-sm"></i>
-                            {{ policy.agent.email }}
+                            <a :href="'mailto:' + policy.agent.email">
+                                <i class="fa-light fa-envelope fa-sm"></i>
+                                {{ policy.agent.email }}
+                            </a>
                         </li>
                     </ul>
                 </article>

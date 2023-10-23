@@ -58,7 +58,7 @@ const form = useForm({
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
-                    <tr v-for="member in data.team.members" :key="member.email">
+                    <tr v-for="member in data.team.members" :key="member.id">
                         <td>
                             <div class="flex items-center">
                                 <div class="h-10 w-10 flex-shrink-0">
@@ -66,7 +66,9 @@ const form = useForm({
                                 </div>
                                 <div class="ml-4">
                                     <div class="font-medium text-gray-900">{{ member.name }}</div>
-                                    <div class="text-gray-500 font-mono text-xs">{{ member.email }}</div>
+                                    <div class="text-gray-500 font-mono text-xs">
+                                        <a :href="'mailto:' + member.email">{{ member.email }}</a>
+                                    </div>
                                 </div>
                             </div>
                         </td>
