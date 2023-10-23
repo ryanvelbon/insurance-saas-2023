@@ -4,8 +4,6 @@ import { Head, Link } from '@inertiajs/inertia-vue3'
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
-    laravelVersion: String,
-    phpVersion: String,
 });
 </script>
 
@@ -225,7 +223,7 @@ defineProps({
                 </div>
 
                 <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{{ laravelVersion }} (PHP v{{ phpVersion }})
+                    Lorem ipsum
                 </div>
             </div>
         </div>

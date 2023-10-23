@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PageController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 
@@ -11,7 +13,6 @@ use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\MotorPolicyController;
 use App\Http\Controllers\TravelPolicyController;
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -26,25 +27,18 @@ use Inertia\Inertia;
 |
 */
 
-
 require __DIR__.'/auth.php';
 
+
 Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return Inertia::render('Welcome', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-        ]);
-    });
+
+    Route::get('/', [PageController::class, 'home'])->name('home');
 });
+
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
