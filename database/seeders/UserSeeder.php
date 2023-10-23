@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'remember_token' => null,
         ]);
 
-        $admin->roles()->sync(Role::where('title', RoleTitle::ADMIN)->first()->id);
+        $admin->assignRole(RoleTitle::ADMIN);
     }
 
     public function createEndUsers()
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                         ->create(['team_id' => $team->id]);
 
             foreach ($users as $user) {
-                $user->roles()->sync(Role::where('title', RoleTitle::SALES_AGENT)->first()->id);
+                $user->assignRole(RoleTitle::SALES_AGENT);
             }
 
             $team->owner_id = $users[0]->id;
