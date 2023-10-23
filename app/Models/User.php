@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->belongsTo(Team::class, 'team_id');
     }
 
+    public function assignRole(RoleTitle $role)
+    {
+        return $this->roles()->syncWithoutDetaching(Role::where('title', $role->value)->first()->id);
+    }
+
     public function hasRole(RoleTitle $role): bool
     {
         return $this->roles()->where('title', $role->value)->exists();
