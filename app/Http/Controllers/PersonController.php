@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Inertia\Inertia;
@@ -16,7 +15,7 @@ class PersonController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('person.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('person.access');
 
         $persons = Person::all();
 
@@ -34,7 +33,7 @@ class PersonController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('person.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('person.create');
 
         return Inertia::render('Person/Create', [
             'data' => [
@@ -45,14 +44,14 @@ class PersonController extends Controller
 
     public function edit(Person $person)
     {
-        abort_if(Gate::denies('person.edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('person.edit');
 
         return view('persons.edit', compact('person'));
     }
 
     public function show(Person $person)
     {
-        abort_if(Gate::denies('person.view'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('person.view');
 
         return Inertia::render('Person/Show', [
             'data' => [
@@ -64,7 +63,7 @@ class PersonController extends Controller
 
     public function destroy(Person $person)
     {
-        abort_if(Gate::denies('person.delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('person.delete');
 
         $person->delete();
 

@@ -6,7 +6,6 @@ use App\Http\Requests\StoreNaturalPersonRequest;
 // use App\Http\Requests\UpdateNaturalPersonRequest;
 use App\Models\Person;
 use App\Models\NaturalPerson;
-use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +15,7 @@ class NaturalPersonController extends Controller
 {
     public function create()
     {
-        abort_if(Gate::denies('person.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('person.create');
 
         return Inertia::render('Person/NaturalPerson/Create', [
             'data' => [

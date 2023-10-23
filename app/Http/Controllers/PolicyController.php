@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -16,7 +15,7 @@ class PolicyController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('policy.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('policy.access');
 
         $policies = Policy::all();
 
@@ -32,7 +31,7 @@ class PolicyController extends Controller
 
     public function show($id): Response
     {
-        abort_if(Gate::denies('policy.view'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('policy.view');
 
         $policy = Policy::findOrFail($id)->load(['insurer', 'policyholder', 'agent']);
 
@@ -43,7 +42,7 @@ class PolicyController extends Controller
 
     public function create(Request $request)
     {
-        abort_if(Gate::denies('policy.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('policy.create');
 
         $categoryId = $request->query('categoryId');
 

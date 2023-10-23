@@ -9,7 +9,6 @@ use App\Http\Resources\TeamShowResource;
 use App\Http\Resources\UserResource;
 use App\Models\Team;
 use App\Models\User;
-use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -22,7 +21,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('user.access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('user.access');
 
         $id = auth()->user()->team_id;
 
@@ -40,7 +39,7 @@ class UserController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('user.create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('user.create');
 
         return Inertia::render('User/Create');
     }
@@ -62,7 +61,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        abort_if(Gate::denies('user.edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('user.edit');
 
         return Inertia::render('User/Edit', [
             'user' => new UserResource($user),
@@ -86,7 +85,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        abort_if(Gate::denies('user.delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('user.delete');
 
         $user->delete();
 
@@ -95,7 +94,7 @@ class UserController extends Controller
 
     public function restore(User $user)
     {
-        abort_if(Gate::denies('user.restore'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('user.restore');
 
         $user->restore();
 
@@ -104,7 +103,7 @@ class UserController extends Controller
 
     public function invite(Request $request)
     {
-        abort_if(Gate::denies('user.invite'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->authorize('user.invite');
 
         $request->validate(['email' => 'email']);
         $team    = Team::where('owner_id', auth()->user()->id)->first();
