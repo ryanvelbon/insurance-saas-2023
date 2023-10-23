@@ -15,6 +15,7 @@ return new class extends Migration
           $table->string('website', 100);
           $table->string('email')->unique();
           $table->string('phone', 15);
+          $table->foreignId('country_id')->nullable()->references('id')->on('countries');
           $table->timestamps();
         });
     }

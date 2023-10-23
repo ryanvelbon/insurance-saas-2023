@@ -21,6 +21,12 @@ return new class extends Migration
             $table->decimal('brokerage_deduction', 15, 2)->nullable();
             $table->decimal('excess', 15, 2);
             $table->decimal('limit_amount', 15, 2);
+            $table->foreignId('category_id')->references('id')->on('insurance_categories');
+            $table->foreignId('insurer_id')->references('id')->on('insurers');
+            $table->foreignId('policyholder_id')->references('id')->on('persons');
+            $table->foreignId('agent_id')->references('id')->on('users');
+            $table->foreignId('team_id')->references('id')->on('teams');
+            $table->foreignId('created_by')->nullable()->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
         });
