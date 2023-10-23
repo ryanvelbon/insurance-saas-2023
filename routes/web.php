@@ -26,51 +26,55 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';
 
-// Users (team members)
-Route::get('/team', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::put('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
-Route::post('/team/invitations', [UserController::class, 'invite'])->name('users.invite');
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return Inertia::render('Welcome', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
+    });
+});
 
-// Persons
-Route::resource('/persons', PersonController::class);
+Route::middleware('auth')->group(function () {
 
-// Persons (Natural)
-Route::get('/natural-persons/create', [NaturalPersonController::class, 'create'])->name('naturalPersons.create');
-Route::post('/natural-persons', [NaturalPersonController::class, 'store'])->name('naturalPersons.store');
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-// Persons (Juridical)
-Route::get('/juridical-persons/create', [JuridicalPersonController::class, 'create'])->name('juridicalPersons.create');
-Route::post('/juridical-persons', [JuridicalPersonController::class, 'store'])->name('juridicalPersons.store');
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Users (team members)
+    Route::get('/team', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::put('/users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
+    Route::post('/team/invitations', [UserController::class, 'invite'])->name('users.invite');
 
-// Policies
-Route::get('/policies/create', [PolicyController::class, 'create'])->name('policies.create');
-Route::get('/policies/{id}', [PolicyController::class, 'show'])->name('policies.show');
-Route::get('/policies', [PolicyController::class, 'index'])->name('policies.index');
-Route::post('/policies', [PolicyController::class, 'store'])->name('policies.store');
+    // Persons
+    Route::resource('/persons', PersonController::class);
+
+    // Persons (Natural)
+    Route::get('/natural-persons/create', [NaturalPersonController::class, 'create'])->name('naturalPersons.create');
+    Route::post('/natural-persons', [NaturalPersonController::class, 'store'])->name('naturalPersons.store');
+
+    // Persons (Juridical)
+    Route::get('/juridical-persons/create', [JuridicalPersonController::class, 'create'])->name('juridicalPersons.create');
+    Route::post('/juridical-persons', [JuridicalPersonController::class, 'store'])->name('juridicalPersons.store');
+
+    // Policies
+    Route::get('/policies/create', [PolicyController::class, 'create'])->name('policies.create');
+    Route::get('/policies/{id}', [PolicyController::class, 'show'])->name('policies.show');
+    Route::get('/policies', [PolicyController::class, 'index'])->name('policies.index');
+    Route::post('/policies', [PolicyController::class, 'store'])->name('policies.store');
+});
