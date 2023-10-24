@@ -26,5 +26,12 @@ module.exports = {
         },
     },
 
+    safelist: [
+        {
+            // Ensures dynamically generated utility classes are safely included in the compiled styles
+            pattern: /(bg|border|text)-(primary|secondary|success|danger|warning|info)-(50|100|200|300|400|500|600|700|800|900|950)/,
+        },
+    ],
+
     plugins: [require('@tailwindcss/forms')],
 };
