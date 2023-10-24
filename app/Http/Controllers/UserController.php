@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return Redirect::route('users.index')->with('success', 'User deleted.');
+        return Redirect::route('users.index')->with('warning', 'User deleted.');
     }
 
     public function restore(User $user)

@@ -212,11 +212,10 @@ const sidebarOpen = ref(false)
         </div>
     </div>
     <div class="fixed bottom-4 right-4 flex flex-col gap-3">
-        <div v-if="$page.props.flash.message" class="h-16 max-w-64 p-2 text-sm shadow-xl border border-gray-300 bg-gray-100 text-gray-600">
-            {{ $page.props.flash.message }}
-        </div>
-        <div v-if="$page.props.flash.success" class="h-16 max-w-64 p-2 text-sm shadow-xl border border-success-300 bg-success-100 text-success-600">
-            {{ $page.props.flash.success }}
-        </div>
+        <template v-for="(message, type) in $page.props.flash">
+            <div v-if="message" :key="type" class="h-16 max-w-64 p-2 text-sm" :class="`shadow-xl border border-${type}-300 bg-${type}-100 text-${type}-600`">
+                {{ message }}
+            </div>
+        </template>
     </div>
 </template>
