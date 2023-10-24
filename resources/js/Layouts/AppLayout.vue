@@ -213,7 +213,7 @@ const sidebarOpen = ref(false)
     </div>
     <div class="fixed bottom-4 right-4 flex flex-col gap-3">
         <template v-for="(message, type) in $page.props.flash">
-            <div v-if="message" :key="type" class="h-16 max-w-64 p-2 text-sm" :class="`shadow-xl border border-${type}-300 bg-${type}-100 text-${type}-600`">
+            <div v-if="message" :key="type" class="h-16 w-96 pl-4 text-base flex items-center" :class="`shadow-md border border-${type}-300 bg-${type}-100 text-${type}-600`">
                 {{ message }}
             </div>
         </template>

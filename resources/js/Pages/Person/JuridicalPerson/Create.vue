@@ -4,7 +4,6 @@ import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
 import TextInput from '@/Components/TextInput2.vue'
 import TextArea from '@/Components/TextArea.vue'
-import PrimaryButton from '@/Components/PrimaryButton.vue'
 import DropdownA from '@/Components/DropdownA.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 
@@ -110,9 +109,7 @@ console.log(props.data)
                 </fieldset>
             </section>
             <div>
-                <PrimaryButton type="submit" class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Save
-                </PrimaryButton>
+                <button type="submit" class="btn btn-primary ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Save</button>
             </div>
         </form>
     </AppLayout>

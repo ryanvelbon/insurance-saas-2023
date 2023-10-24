@@ -43,8 +43,8 @@ const restore = () => {
     <Head :title="`Edit User - ${user.name}`" />
     <AppLayout>
         <div class="bg-white shadow-md max-w-3xl my-12 mx-12">
-            <form @submit.prevent="update">
-                <div class="grid grid-cols-2 gap-8 p-4">
+            <form @submit.prevent="update" class="p-6">
+                <div class="grid grid-cols-2 gap-8">
 
                     <TextInput v-model="form.name" :error="form.errors.name" label="Name"  type="text" required />
                     <TextInput v-model="form.email" :error="form.errors.email" label="Email" type="email" required />
@@ -58,10 +58,10 @@ const restore = () => {
                         <p class="text-danger-600">{{ form.errors.roles }}</p>
                     </div>
                 </div>
-                <div class="flex justify-between">                    
-                    <button v-if="user.deleted_at" type="button" @click="restore" class="bg-warning-500 p-4">Restore</button>
-                    <button v-if="!user.deleted_at" type="button" @click="destroy" class="bg-danger-500 p-4">Delete</button>
-                    <button type="submit" class="bg-gray-100 p-4">Update User</button>
+                <div class="flex justify-between mt-12">
+                    <button v-if="user.deleted_at" type="button" @click="restore" class="btn btn-outline-primary">Restore</button>
+                    <button v-if="!user.deleted_at" type="button" @click="destroy" class="btn btn-outline-danger">Delete</button>
+                    <button type="submit" class="btn btn-primary">Update User</button>
                 </div>
             </form>
         </div>

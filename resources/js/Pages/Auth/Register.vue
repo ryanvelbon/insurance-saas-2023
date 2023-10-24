@@ -3,7 +3,6 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
@@ -107,9 +106,7 @@ const submit = () => {
                             Already registered?
                         </Link>
 
-                        <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                            Register
-                        </PrimaryButton>
+                        <button type="submit" class="btn btn-primary ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Register</button>
                     </div>
                 </form>
             </div>

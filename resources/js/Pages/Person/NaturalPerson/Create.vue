@@ -5,7 +5,6 @@ import AppLayout from '@/Layouts/AppLayout.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import InputError from '@/Components/InputError.vue'
 import TextInput from '@/Components/TextInput2.vue'
-import PrimaryButton from '@/Components/PrimaryButton.vue'
 import DropdownA from '@/Components/DropdownA.vue'
 import { useStaticDataStore } from '@/stores/staticData'
 
@@ -117,9 +116,7 @@ const submit = () => {
                 </section>
             </div>
             <div class="bg-pink-200">
-                <PrimaryButton type="submit" class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Save
-                </PrimaryButton>
+                <button type="submit" class="btn btn-primary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Save</button>
             </div>
         </form>
     </AppLayout>

@@ -110,7 +110,7 @@ const breadcrumbPages = [
                         Cancel
                     </Link>
 
-                    <button class="bg-primary-500 hover:bg-primary-400 text-white w-full text-center py-3 font-bold rounded-lg" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <button class="btn btn-primary btn-block" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Save
                     </button>
                 </div>

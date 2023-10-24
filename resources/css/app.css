@@ -1,3 +1,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define your component styles here */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded focus:outline-none focus:ring focus:ring-opacity-50 disabled:opacity-50;
+  }
+
+  .btn-lg {
+    @apply text-lg;
+  }
+
+  .btn-block {
+    @apply block w-full;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600;
+  }
+
+  .btn-outline-primary {
+    @apply border border-primary-500 text-primary-500 hover:bg-primary-100;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-500 text-white hover:bg-secondary-600;
+  }
+
+  .btn-outline-secondary {
+    @apply border border-secondary-500 text-secondary-500 hover:bg-secondary-100;
+  }
+
+  .btn-success {
+    @apply bg-success-500 text-white hover:bg-success-600;
+  }
+
+  .btn-outline-success {
+    @apply border border-success-500 text-success-500 hover:bg-success-100;
+  }
+
+  .btn-danger {
+    @apply bg-danger-500 text-white hover:bg-danger-600;
+  }
+
+  .btn-outline-danger {
+    @apply border border-danger-500 text-danger-500 hover:bg-danger-100;
+  }
+
+  .btn-warning {
+    @apply bg-warning-500 text-white hover:bg-warning-600;
+  }
+
+  .btn-outline-warning {
+    @apply border border-warning-500 text-warning-500 hover:bg-warning-100;
+  }
+
+  .btn-info {
+    @apply bg-info-500 text-white hover:bg-info-600;
+  }
+
+  .btn-outline-info {
+    @apply border border-info-500 text-info-500 hover:bg-info-100;
+  }
+}

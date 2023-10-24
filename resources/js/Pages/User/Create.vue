@@ -45,8 +45,8 @@ const store = () => {
                     </div>
                 </div>
                 <div class="flex justify-between">
-                    <button type="button" class="bg-gray-100 p-4">Cancel</button>
-                    <button type="submit" class="bg-gray-100 p-4">Create</button>
+                    <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Create</button>
                 </div>
             </form>
         </div>
