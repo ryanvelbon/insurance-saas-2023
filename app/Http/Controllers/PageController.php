@@ -15,9 +15,6 @@ class PageController extends Controller
 
     public function home()
     {
-        return Inertia::render('Welcome', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-        ]);
+        return Inertia::render('Welcome');
     }
 }
