@@ -1,12 +1,27 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
+import { Inertia } from '@inertiajs/inertia'
 import { Head, Link } from '@inertiajs/inertia-vue3'
+import pickBy from 'lodash/pickBy'
+import throttle from 'lodash/throttle'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import Modal from '@/Components/Modal.vue'
 import Pagination from '@/Components/Pagination.vue'
 
 const props = defineProps({
-    persons: Array,
+    filters: Object,
+    persons: Object,
+})
+
+const form = ref({
+    search: props.filters.search,
+    trashed: props.filters.trashed,
+})
+
+watchEffect(() => {
+    throttle(() => {
+        Inertia.get(route('persons.index'), pickBy(form.value), { preserveState: true })
+    }, 150)()
 })
 
 let showModal = ref(false)
@@ -22,9 +37,14 @@ let showModal = ref(false)
             <div>
                 <h1 class="text-4xl font-bold">Persons</h1>
             </div>
-            <div class="flex justify-between items-center bg-blue-200 py-4">
+            <div class="flex justify-between items-center py-4">
                 <div>
-                    hello
+                    <input autocomplete="off" type="text" v-model="form.search" placeholder="Search…" />
+                    <select v-model="form.trashed">
+                        <option :value="null" />
+                        <option value="with">With Trashed</option>
+                        <option value="only">Only Trashed</option>
+                    </select>
                 </div>
                 <div>
                     <button @click="showModal = true" class="btn btn-primary">Add a Person</button>

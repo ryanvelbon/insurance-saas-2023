@@ -70,6 +70,20 @@ class Person extends Model
         return $query->where('type', self::TYPE_JURIDICAL);
     }
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where('email', 'like', '%'.$search.'%')
+                ->orWhere('phone', 'like', '%'.$search.'%');
+        })->when($filters['trashed'] ?? null, function ($query, $trashed) {
+            if ($trashed === 'with') {
+                $query->withTrashed();
+            } elseif ($trashed === 'only') {
+                $query->onlyTrashed();
+            }
+        });
+    }
+
     public function getNameAttribute()
     {
         if ($this->type === self::TYPE_NATURAL) {

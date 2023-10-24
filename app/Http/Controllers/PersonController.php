@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Inertia\Inertia;
 // use App\Providers\RouteServiceProvider;
@@ -21,7 +21,10 @@ class PersonController extends Controller
 
         return Inertia::render('Person/Index', [
 
-            'persons' => Person::paginate($perPage),
+            'filters' => Request::all('search', 'trashed'),
+            'persons' => Person::query()
+                            ->filter(Request::only('search', 'trashed'))
+                            ->paginate($perPage),
 
         ]);
 
