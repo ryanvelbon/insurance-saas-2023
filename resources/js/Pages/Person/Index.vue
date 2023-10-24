@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import Modal from '@/Components/Modal.vue'
+import Pagination from '@/Components/Pagination.vue'
 
 const props = defineProps({
-    data: Object,
-    meta: Object,
+    persons: Array,
 })
 
 let showModal = ref(false)
@@ -19,16 +19,18 @@ let showModal = ref(false)
         <Head title="People" />
 
         <div class="px-4 sm:px-6 lg:px-8">
-            <div class="sm:flex sm:items-center">
-                <div class="sm:flex-auto">
-                    <h1 class="text-xl font-semibold text-gray-900">Persons</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of all the persons in your account including their name, title, email and role.</p>
+            <div>
+                <h1 class="text-4xl font-bold">Persons</h1>
+            </div>
+            <div class="flex justify-between items-center bg-blue-200 py-4">
+                <div>
+                    hello
                 </div>
-                <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                <div>
                     <button @click="showModal = true" class="btn btn-primary">Add a Person</button>
                 </div>
             </div>
-            <div class="mt-8 flex flex-col">
+            <div class="flex flex-col">
                 <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="inline-block min-w-full py-2 align-middle">
                         <div class="overflow-hidden shadow-sm ring-1 ring-black ring-opacity-5">
@@ -46,7 +48,7 @@ let showModal = ref(false)
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 bg-white">
-                                    <tr v-for="person in data.persons" :key="person.id">
+                                    <tr v-for="person in persons.data" :key="person.id">
                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">{{ person.name }}</td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person.phone }}</td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -66,6 +68,7 @@ let showModal = ref(false)
                     </div>
                 </div>
             </div>
+            <Pagination :links="persons.links" class="mt-8" />
         </div>
         <Modal :show="showModal" maxWidth="xl" @close="showModal = false">
             <div class="mb-8">

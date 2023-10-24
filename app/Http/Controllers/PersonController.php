@@ -17,15 +17,12 @@ class PersonController extends Controller
     {
         $this->authorize('person.access');
 
-        $persons = Person::all();
+        $perPage = 10;
 
         return Inertia::render('Person/Index', [
-            'data' => [
-                'persons' => $persons
-            ],
-            'meta' => [
 
-            ],
+            'persons' => Person::paginate($perPage),
+
         ]);
 
         return view('persons.index', compact('persons'));
