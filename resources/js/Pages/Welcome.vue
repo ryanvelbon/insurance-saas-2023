@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import NavBar from '@/Components/NavBar.vue'
+import Footer from '@/Components/Footer.vue'
 </script>
 
 <template>
@@ -69,6 +70,6 @@ import NavBar from '@/Components/NavBar.vue'
             </div>
         </div>
     </section>
-    <section class="bg-primary-800">section</section>
-
+    <section class="bg-primary-500">CTA section</section>
+    <Footer />
 </template>
