@@ -64,3 +64,9 @@
     @apply border border-info-500 text-info-500 hover:bg-info-100;
   }
 }
+
+@layer utilities {
+  .rounded-oval {
+      border-radius: 50% / 30% 30% 70% 30%;
+  }
+}
