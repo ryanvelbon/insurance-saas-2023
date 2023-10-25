@@ -60,53 +60,53 @@ const navigation = {
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-                <div class="text-white">
-                    <img class="h-7" src="https://tailwindui.com/img/logos/mark.svg?color=white" alt="Siguranza" />
-                    <p class="text-gray-300 text-sm leading-6">Siguranza consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
                 <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <h3 class="text-sm font-semibold leading-6 text-white">Solutions</h3>
-                            <ul role="list" class="mt-6 space-y-4">
+                            <h3 class="menu-heading">Solutions</h3>
+                            <ul role="list" class="space-y-4">
                                 <li v-for="item in navigation.solutions" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    <a :href="item.href" class="menu-item">{{ item.name }}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="mt-10 md:mt-0">
-                            <h3 class="text-sm font-semibold leading-6 text-white">Support</h3>
-                            <ul role="list" class="mt-6 space-y-4">
+                            <h3 class="menu-heading">Support</h3>
+                            <ul role="list" class="space-y-4">
                                 <li v-for="item in navigation.support" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    <a :href="item.href" class="menu-item">{{ item.name }}</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <h3 class="text-sm font-semibold leading-6 text-white">Company</h3>
-                            <ul role="list" class="mt-6 space-y-4">
+                            <h3 class="menu-heading">Company</h3>
+                            <ul role="list" class="space-y-4">
                                 <li v-for="item in navigation.company" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    <a :href="item.href" class="menu-item">{{ item.name }}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="mt-10 md:mt-0">
-                            <h3 class="text-sm font-semibold leading-6 text-white">Legal</h3>
-                            <ul role="list" class="mt-6 space-y-4">
+                            <h3 class="menu-heading">Legal</h3>
+                            <ul role="list" class="space-y-4">
                                 <li v-for="item in navigation.legal" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    <a :href="item.href" class="menu-item">{{ item.name }}</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div class="text-white">
+                    <h3 class="menu-heading">Siguranza</h3>
+                    <p class="text-gray-300 text-sm leading-6">Siguranza consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
             <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
                 <div>
-                    <h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
-                    <p class="mt-2 text-sm leading-6 text-gray-300">The latest news, articles, and resources, sent to your inbox weekly.</p>
+                    <h3>Subscribe to our newsletter</h3>
+                    <p class="text-sm leading-6 text-gray-300">The latest news, articles, and resources, sent to your inbox weekly.</p>
                 </div>
                 <form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
                     <label for="email-address" class="sr-only">Email address</label>
@@ -128,3 +128,17 @@ const navigation = {
         </div>
     </footer>
 </template>
+
+<style scoped>
+h3 {
+    @apply text-lg font-semibold leading-6 tracking-wider text-primary-300 font-serif;
+}
+
+.menu-heading {
+    @apply mb-6;
+}
+
+.menu-item {
+    @apply text-sm leading-6 text-gray-300 hover:text-white;
+}
+</style>
