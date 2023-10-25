@@ -4,7 +4,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 
 const navigation = [
     { name: 'Home', href: route('home'), current: route().current('home') },
-    { name: 'Pricing', href: '#', current: false },
+    { name: 'Pricing', href: route('pricing'), current: route().current('pricing') },
     { name: 'Resources', href: '#', current: false },
     { name: 'Enterprise', href: '#', current: false },
 ]

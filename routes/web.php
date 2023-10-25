@@ -33,6 +33,7 @@ require __DIR__.'/auth.php';
 Route::middleware('guest')->group(function () {
 
     Route::get('/', [PageController::class, 'home'])->name('home');
+    Route::get('/pricing', function() { return view('pricing'); })->name('pricing');
 });
 
 
