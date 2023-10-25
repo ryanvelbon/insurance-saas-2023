@@ -70,6 +70,10 @@ import Footer from '@/Components/Footer.vue'
             </div>
         </div>
     </section>
-    <section class="bg-primary-500">CTA section</section>
+    <section class="bg-primary-900 py-24 text-center px-2">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Get started with Siguranza today</h2>
+        <p class="mt-6 text-base sm:text-lg md:text-xl text-white mb-10">Get 30 days of full access to all toolkits. Cancel anytime.</p>
+        <a href="" class="btn btn-lg btn-secondary px-24 py-3">Start your free trial</a>
+    </section>
     <Footer />
 </template>
