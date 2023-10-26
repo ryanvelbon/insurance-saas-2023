@@ -2,6 +2,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import NavBar from '@/Components/NavBar.vue'
 import Footer from '@/Components/Footer.vue'
+import TabbedFeatures from '@/Components/TabbedFeatures.vue'
 </script>
 
 <template>
@@ -23,6 +24,12 @@ import Footer from '@/Components/Footer.vue'
             <div class="flex justify-center items-center">
                 <img src="https://placehold.co/512x512">
             </div>
+        </div>
+    </section>
+    <section class="bg-gray-200 py-24">
+        <h2 class="text-5xl font-bold text-center text-gray-800 mb-12">See what's inside</h2>
+        <div class="mx-auto max-w-5xl">
+            <TabbedFeatures />
         </div>
     </section>
     <section class="isolate overflow-hidden px-6 lg:px-8 bg-primary-600">
