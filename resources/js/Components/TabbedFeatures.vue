@@ -5,6 +5,7 @@ const features = [
     {
         id: 1,
         name: 'Feature 1',
+        icon: 'circle',
         heading: 'Aute irure dolor in reprehenderit in voluptate velit esse',
         bullets: [
             'Lorem ipsum dolor sit amet',
@@ -16,6 +17,7 @@ const features = [
     {
         id: 2,
         name: 'Feature 2',
+        icon: 'circle',
         heading: 'Ut enim ad incididunt ut labore et dolore magna aliqua',
         bullets: [
             'Magna aliqua. Ut enim ad minim veniam',
@@ -27,6 +29,7 @@ const features = [
     {
         id: 3,
         name: 'Feature 3',
+        icon: 'circle',
         heading: 'Excepteur sint occaecat cupidatat non cillum dolore eu fugiat',
         bullets: [
             'Dolor in reprehenderit in voluptate velit esse',
@@ -38,6 +41,7 @@ const features = [
     {
         id: 4,
         name: 'Feature 4',
+        icon: 'circle',
         heading: 'Proident sunt in culpa qui officia deserunt mollit',
         bullets: [
             'Tempor incididunt ut labore et dolore',
@@ -49,6 +53,7 @@ const features = [
     {
         id: 5,
         name: 'Feature 5',
+        icon: 'circle',
         heading: 'Quis nostrud exercitation ullamco laboris nisi ut aliquip',
         bullets: [
             'Excepteur sint occaecat cupidatat non',
@@ -75,7 +80,17 @@ let selectedFeature = ref(features[0]);
         <div class="hidden sm:block">
             <div class="border-b border-gray-200">
                 <nav class="-mb-px flex" aria-label="Tabs">
-                    <button v-for="feature in features" :key="feature.id" @click="selectedFeature = feature" :class="[feature.id === selectedFeature.id ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'w-1/4 border-b-2 py-4 px-1 text-center text-sm font-medium']" :aria-current="feature === selectedFeature ? 'page' : undefined">{{ feature.name }}</button>
+                    <button
+                        v-for="feature in features"
+                        :key="feature.id"
+                        @click="selectedFeature = feature"
+                        class="flex flex-col gap-8"
+                        :class="[feature.id === selectedFeature.id ? 'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700', 'w-1/4 border-b-2 py-4 px-1 text-center font-medium']"
+                        :aria-current="feature === selectedFeature ? 'page' : undefined"
+                    >
+                        <i :class="`fa-duotone fa-${feature.icon} text-4xl lg:text-7xl`"></i>
+                        <span class="text-base lg:text-lg">{{ feature.name }}</span>
+                    </button>
                 </nav>
             </div>
         </div>
