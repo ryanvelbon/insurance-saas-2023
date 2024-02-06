@@ -15,7 +15,7 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
             <div class="text-center lg:text-left">
                 <h1 class="uppercase text-sm font-semibold text-gray-600">Insurance Broker Software</h1>
                 <h2 class="mt-4 text-6xl font-bold text-gray-800">Smart, simple software for insurance brokers and agencies</h2>
-                <p class="mt-6 text-gray-800">Say goodbye to spreadsheets. With Siguranza, you and your team can manage customers, write policies, file claims, run financial reports and more, all from one place.</p>
+                <p class="mt-6 text-gray-800">Say goodbye to spreadsheets. With inxuro, you and your team can manage customers, write policies, file claims, run financial reports and more, all from one place.</p>
                 <div class="mt-12 mb-8">
                     <a href="" class="btn btn-lg btn-primary mr-4">Buy now</a>
                     <a href="" class="btn btn-lg btn-secondary">Free 30-day trial</a>
@@ -78,7 +78,7 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
         </div>
     </section>
     <section class="bg-primary-900 py-24 text-center px-2">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Get started with Siguranza today</h2>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Get started with inxuro today</h2>
         <p class="mt-6 text-base sm:text-lg md:text-xl text-white mb-10">Get 30 days of full access to all toolkits. Cancel anytime.</p>
         <a href="" class="btn btn-lg btn-secondary px-24 py-3">Start your free trial</a>
     </section>

@@ -1,6 +1,6 @@
 # Project Title
 
-[Siguranza]() is a CRM for insurance sales agents built on open-source technologies such as [Laravel](), [Vue.js](), [Tailwind]().
+[inxuro]() is a CRM for insurance sales agents built on open-source technologies such as [Laravel](), [Vue.js](), [Tailwind]().
 
 * [Requirements](#requirements)
 * [Installation](#installation)
@@ -36,7 +36,7 @@ Create sample data (optional)
 
 Kindly ensure your commit messages and pull requests are descriptive; pull requests with blank messages might be declined without further explanation.
 
-When adding code to Siguranza, adhere to the PSR coding guidelines. The guiding principle is: Imitate the existing Siguranza coding style.
+When adding code to inxuro, adhere to the PSR coding guidelines. The guiding principle is: Imitate the existing inxuro coding style.
 
 Be aware that this project comes with a [Contributor Code of Conduct](). Engaging in this project means you accept its conditions.
 
@@ -54,7 +54,7 @@ Please review [our security policy]() on how to report security vulnerabilities.
 
 ## License
 
-Siguranza is released under the [BSL license](LICENSE.txt).
+inxuro is released under the [BSL license](LICENSE.txt).
 
 ---
 <!-- The rest of this README is Docs -->

@@ -67,7 +67,7 @@ const sidebarOpen = ref(false)
                             </TransitionChild>
                             <div class="flex flex-shrink-0 items-center px-4">
                                 <img class="h-6 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=black&shade=600" alt="Your Company" />
-                                <span class="text-primary-600 text-xl font-bold ml-3">Siguranza</span>
+                                <span class="text-primary-600 text-xl font-bold ml-3">inxuro</span>
                             </div>
                             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                                 <nav class="space-y-1 px-2">
@@ -92,7 +92,7 @@ const sidebarOpen = ref(false)
             <div class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
                 <div class="flex flex-shrink-0 items-center px-4">
                     <img class="h-6 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=black&shade=600" alt="Your Company" />
-                    <span class="text-primary-600 text-xl font-bold ml-3">Siguranza</span>
+                    <span class="text-primary-600 text-xl font-bold ml-3">inxuro</span>
                 </div>
                 <div class="mt-5 flex flex-grow flex-col">
                     <nav class="flex-1">

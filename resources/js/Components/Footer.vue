@@ -92,8 +92,8 @@ const navigation = {
                 </ul>
             </div>
             <div class="col-span-2">
-                <h3 class="menu-heading">Siguranza</h3>
-                <p class="text-gray-300 text-sm leading-6">Siguranza consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h3 class="menu-heading">inxuro</h3>
+                <p class="text-gray-300 text-sm leading-6">inxuro consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
                 <h3 class="menu-heading mt-16">Subscribe to our newsletter</h3>
                 <form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
@@ -113,7 +113,7 @@ const navigation = {
                     <i :class="`fa-brands fa-${item.icon} fa-xl`"></i>
                 </a>
             </div>
-            <p class="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">&copy; 2023 - 2024 Siguranza. All rights reserved.</p>
+            <p class="mt-8 text-xs leading-5 text-gray-400 md:order-1 md:mt-0">&copy; 2023 - 2024 inxuro. All rights reserved.</p>
         </div>
     </footer>
 </template>
