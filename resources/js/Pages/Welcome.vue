@@ -10,15 +10,15 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
 
     <NavBar />
 
-    <section class="bg-primary-50 py-16">
+    <section class="bg-white py-32 pb-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="text-center lg:text-left">
+            <div class="text-center lg:text-left flex flex-col justify-center">
                 <h1 class="uppercase text-sm font-semibold text-gray-600">Insurance Broker Software</h1>
-                <h2 class="mt-4 text-6xl font-bold text-gray-800">Smart, simple software for insurance brokers and agencies</h2>
-                <p class="mt-6 text-gray-800">Say goodbye to spreadsheets. With inxuro, you and your team can manage customers, write policies, file claims, run financial reports and more, all from one place.</p>
-                <div class="mt-12 mb-8">
-                    <a href="" class="btn btn-lg btn-primary mr-4">Buy now</a>
-                    <a href="" class="btn btn-lg btn-secondary">Free 30-day trial</a>
+                <h2 class="mt-4 text-5xl font-bold text-gray-800">Smart, simple software for insurance brokers and agencies</h2>
+                <p class="mt-6 text-xl text-gray-700">Say goodbye to spreadsheets. With inxuro, you and your team can manage customers, write policies, file claims, run financial reports and more, all from one place.</p>
+                <div class="mt-12 mb-8 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+                    <a href="" class="btn btn-xl btn-primary">Buy now</a>
+                    <a href="" class="btn btn-xl btn-secondary">Free 30-day trial</a>
                 </div>
             </div>
             <div class="flex justify-center items-center">
@@ -26,17 +26,17 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
             </div>
         </div>
     </section>
-    <section class="bg-gray-200 py-24">
-        <h2 class="text-5xl font-bold text-center text-gray-800 mb-12">See what's inside</h2>
+    <section class="bg-tertiary-600 py-24">
+        <h2 class="text-5xl font-bold text-center text-white mb-24">See what's inside</h2>
         <div class="mx-auto max-w-5xl">
             <TabbedFeatures />
         </div>
     </section>
-    <section class="isolate overflow-hidden px-6 lg:px-8 bg-primary-600">
+    <section class="isolate overflow-hidden px-6 lg:px-8 bg-white">
         <div class="relative mx-auto max-w-2xl py-24 sm:py-32 lg:max-w-4xl">
             <figure class="grid grid-cols-1 items-center gap-x-6 gap-y-8 lg:gap-x-10">
                 <div class="relative col-span-2 lg:col-start-1 lg:row-start-2">
-                    <blockquote class="text-xl leading-8 text-white sm:text-3xl sm:leading-9">
+                    <blockquote class="text-xl leading-8 text-gray-700 italic sm:text-3xl sm:leading-9 bg-gray-100 p-8 rounded-2xl">
                         <p>“Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.”</p>
                     </blockquote>
                 </div>
@@ -44,8 +44,8 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
                     <img class="lg:rounded-oval bg-indigo-50" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=576&h=576&q=80" alt="">
                 </div>
                 <figcaption class="text-base lg:col-start-1 lg:row-start-3">
-                    <div class="font-semibold text-white">Thomas Andrews</div>
-                    <div class="mt-1 text-gray-200">CEO of SafetyFirst</div>
+                    <div class="font-semibold text-primary-600">Thomas Andrews</div>
+                    <div class="mt-1 text-gray-700">CEO of SafetyFirst</div>
                 </figcaption>
             </figure>
         </div>
@@ -77,10 +77,10 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
             </div>
         </div>
     </section>
-    <section class="bg-primary-900 py-24 text-center px-2">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Get started with inxuro today</h2>
+    <section class="bg-primary-900 py-32 text-center px-2">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Get started<br>with inxuro today</h2>
         <p class="mt-6 text-base sm:text-lg md:text-xl text-white mb-10">Get 30 days of full access to all toolkits. Cancel anytime.</p>
-        <a href="" class="btn btn-lg btn-secondary px-24 py-3">Start your free trial</a>
+        <a href="" class="btn btn-xl btn-secondary">Start your free trial</a>
     </section>
     <Footer />
 </template>

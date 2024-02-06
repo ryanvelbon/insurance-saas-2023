@@ -9,7 +9,7 @@
 /* Define your component styles here */
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded focus:outline-none focus:ring focus:ring-opacity-50 disabled:opacity-50;
+    @apply font-bold px-4 py-2 rounded focus:outline-none focus:ring focus:ring-opacity-50 disabled:opacity-50;
   }
 
   .btn-sm {
@@ -17,7 +17,11 @@
   }
 
   .btn-lg {
-    @apply text-lg;
+    @apply text-lg px-4 py-3;
+  }
+
+  .btn-xl {
+    @apply text-xl px-6 py-4;
   }
 
   .btn-block {

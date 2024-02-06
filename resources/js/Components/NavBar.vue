@@ -1,6 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const navigation = [
     { name: 'Home', href: route('home'), current: route().current('home') },
@@ -8,10 +9,29 @@ const navigation = [
     { name: 'Resources', href: '#', current: false },
     { name: 'Enterprise', href: '#', current: false },
 ]
+
+const isScrolled = ref(false)
+
+function handleScroll() {
+    isScrolled.value = window.scrollY > 0
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+})
+
 </script>
 
 <template>
-    <Disclosure as="nav" class="bg-white shadow" v-slot="{ open }">
+    <Disclosure as="nav"
+        class="fixed top-0 w-full z-20 bg-white"
+        :class="isScrolled ? 'shadow-lg' : ''"
+        v-slot="{ open }"
+    >
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
