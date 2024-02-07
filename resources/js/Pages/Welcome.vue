@@ -26,14 +26,24 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
             </div>
         </div>
     </section>
-    <section class="bg-tertiary-600 py-24">
+    <section class="bg-tertiary-600 py-36 relative">
+        <div class="divider-1-top">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
         <h2 class="text-5xl font-bold text-center text-white mb-24">See what's inside</h2>
         <div class="mx-auto max-w-5xl">
             <TabbedFeatures />
         </div>
+        <div class="divider-1-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
     </section>
     <section class="isolate overflow-hidden px-6 lg:px-8 bg-white">
-        <div class="relative mx-auto max-w-2xl py-24 sm:py-32 lg:max-w-4xl">
+        <div class="relative mx-auto max-w-2xl py-8 sm:py-16 lg:max-w-4xl">
             <figure class="grid grid-cols-1 items-center gap-x-6 gap-y-8 lg:gap-x-10">
                 <div class="relative col-span-2 lg:col-start-1 lg:row-start-2">
                     <blockquote class="text-xl leading-8 text-gray-700 italic sm:text-3xl sm:leading-9 bg-gray-100 p-8 rounded-2xl">
@@ -84,3 +94,46 @@ import TabbedFeatures from '@/Components/TabbedFeatures.vue'
     </section>
     <Footer />
 </template>
+
+<style scoped>
+.divider-1-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.divider-1-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 69px;
+}
+
+.divider-1-top .shape-fill {
+    fill: #FFFFFF;
+}
+
+.divider-1-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.divider-1-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(238% + 1.3px);
+    height: 109px;
+}
+
+.divider-1-bottom .shape-fill {
+    fill: #FFFFFF;
+}
+</style>
